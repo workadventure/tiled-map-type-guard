@@ -18,9 +18,8 @@
   },
   "keywords": [
     "typescript",
-    "javascript",
-    "template",
-    "boilerplate"
+    "tiled",
+    "type-guard"
   ],
   "author": "Abhishek <abhishek.rpidanny@gmail.com>",
   "license": "MIT",
