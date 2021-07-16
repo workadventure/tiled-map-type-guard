@@ -1,0 +1,69 @@
+{
+  "name": "@rpidanny/typescript-package-template",
+  "version": "1.2.1",
+  "description": "Typescript package boilerplate template",
+  "main": "dist/index.js",
+  "types": "dist/index.d.js",
+  "scripts": {
+    "build": "./node_modules/typescript/bin/tsc -p ./tsconfig.build.json",
+    "lint": "eslint . --ext .js,.ts",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "npm run lint && jest ./test/*",
+    "dev": "ts-node src/index.ts",
+    "semantic-release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rpidanny/typescript-package-template.git"
+  },
+  "keywords": [
+    "typescript",
+    "javascript",
+    "template",
+    "boilerplate"
+  ],
+  "author": "Abhishek <abhishek.rpidanny@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rpidanny/typescript-package-template/issues"
+  },
+  "homepage": "https://github.com/rpidanny/typescript-package-template#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-push": "npm run lint"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "npm run lint"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^12.0.0",
+    "@commitlint/config-conventional": "^12.0.0",
+    "@rpidanny/eslint-config-typescript": "^1.0.0",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/commit-analyzer": "^8.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/npm": "^7.1.0",
+    "@types/jest": "^26.0.22",
+    "eslint": "^7.6.0",
+    "husky": "^5.0.9",
+    "jest": "^26.2.2",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.0.5",
+    "semantic-release": "^17.2.1",
+    "ts-jest": "^26.1.4",
+    "ts-node": "^9.0.0",
+    "tsc": "^2.0.3",
+    "typescript": "^4.0.2"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
