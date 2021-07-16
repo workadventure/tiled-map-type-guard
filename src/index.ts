@@ -1,5 +1,21 @@
-const echo = (msg: string): string => {
-  return msg;
-};
+export * from './ITiledMap';
+export * from './ITiledMapChunk';
+export * from './ITiledMapFrame';
+export * from './ITiledMapGrid';
+export * from './ITiledMapGroupLayer';
+export * from './ITiledMapImageLayer';
+export * from './ITiledMapLayer';
+export * from './ITiledMapObject';
+export * from './ITiledMapObjectLayer';
+export * from './ITiledMapOffset';
+export * from './ITiledMapPoint';
+export * from './ITiledMapProperty';
+export * from './ITiledMapTerrain';
+export * from './ITiledMapText';
+export * from './ITiledMapTile';
+export * from './ITiledMapTileset';
+export * from './ITiledMapTransformations';
+export * from './ITiledMapWangColor';
+export * from './ITiledMapWangSet';
+export * from './ITiledMapWangTile';
 
-export default echo;
