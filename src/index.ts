@@ -1,5 +1,5 @@
 const echo = (msg: string): string => {
-  return msg
-}
+  return msg;
+};
 
-export default echo
+export default echo;

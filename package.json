@@ -65,5 +65,8 @@
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "generic-type-guard": "^3.4.1"
   }
 }
