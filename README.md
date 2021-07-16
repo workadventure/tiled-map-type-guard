@@ -1,6 +1,6 @@
 # Tiled map type guard
 
-![gh-actions](https://github.com/workadventure/tiled-map-type-guard/workflows/Release/badge.svg) [![codecov](https://codecov.io/gh/workadventure/tiled-map-type-guard/branch/main/graph/badge.svg?token=UCCA6D6JCB)](https://codecov.io/gh/workadventure/tiled-map-type-guard)
+![Github Actions](https://github.com/workadventure/tiled-map-type-guard/workflows/Release/badge.svg) [![codecov](https://codecov.io/gh/workadventure/tiled-map-type-guard/branch/main/graph/badge.svg?token=UCCA6D6JCB)](https://codecov.io/gh/workadventure/tiled-map-type-guard)
 
 When working with [Tiled](https://www.mapeditor.org/) maps, it can be useful to have propertly defined types in Typescript.
 
