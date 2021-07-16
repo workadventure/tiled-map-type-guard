@@ -18,4 +18,3 @@ export * from './ITiledMapTransformations';
 export * from './ITiledMapWangColor';
 export * from './ITiledMapWangSet';
 export * from './ITiledMapWangTile';
-
