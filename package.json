@@ -1,6 +1,6 @@
 {
   "name": "@workadventure/tiled-map-type-guard",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Typescript package boilerplate template",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
