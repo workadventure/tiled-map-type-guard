@@ -273,6 +273,64 @@ describe('Test ITiledMapObjectLayer type guard', () => {
   });
 });
 
+describe('Test ITiledMapTileset animated type guard', () => {
+  it('should pass', () => {
+    const property: ITiledMapTileset = {
+      columns: 8,
+      firstgid: 1,
+      image: 'animated_tiles.png',
+      imageheight: 32,
+      imagewidth: 256,
+      margin: 0,
+      name: 'animated_tiles',
+      spacing: 0,
+      tilecount: 8,
+      tileheight: 32,
+      tiles: [
+        {
+          animation: [
+            {
+              duration: 100,
+              tileid: 0,
+            },
+            {
+              duration: 100,
+              tileid: 1,
+            },
+            {
+              duration: 100,
+              tileid: 2,
+            },
+            {
+              duration: 100,
+              tileid: 3,
+            },
+            {
+              duration: 100,
+              tileid: 4,
+            },
+            {
+              duration: 100,
+              tileid: 5,
+            },
+            {
+              duration: 100,
+              tileid: 6,
+            },
+            {
+              duration: 100,
+              tileid: 7,
+            },
+          ],
+          id: 0,
+        },
+      ],
+      tilewidth: 32,
+    };
+    expect(isTiledMapTileset(property)).toBe(true);
+  });
+});
+
 describe('Test ITiledMapObjectLayer type guard', () => {
   it('should pass', () => {
     const property = {

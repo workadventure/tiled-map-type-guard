@@ -9,7 +9,7 @@ export const isTiledMapTile = new tg.IsInterface()
     id: tg.isNumber,
   })
   .withOptionalProperties({
-    animation: isTiledMapFrame,
+    animation: tg.isArray(isTiledMapFrame),
     image: tg.isString,
     imageheight: tg.isNumber,
     imagewidth: tg.isNumber,
