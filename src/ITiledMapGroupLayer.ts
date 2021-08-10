@@ -1,6 +1,6 @@
 import * as tg from 'generic-type-guard';
-import { isTiledMapProperty } from './ITiledMapProperty';
-import { isTiledMapLayer } from './ITiledMapLayer';
+import { isTiledMapProperty, ITiledMapProperty } from './ITiledMapProperty';
+import { isTiledMapLayer, ITiledMapLayer } from './ITiledMapLayer';
 import { TypeGuard } from 'generic-type-guard';
 /* eslint-disable @typescript-eslint/ban-types */
 
@@ -10,19 +10,22 @@ export const isTiledMapGroupLayer: TypeGuard<
     name: string;
     visible: boolean;
     type: 'group';
-    layers: (object & Partial<object>)[];
+    layers: ITiledMapLayer[];
   } & Partial<{
-      starty: number;
-      offsety: number;
-      startx: number;
-      offsetx: number;
       height: number;
+      draworder: string;
+      id: number;
+      offsetx: number;
+      offsety: number;
+      parallaxx: number;
+      parallaxy: number;
+      properties: ITiledMapProperty[];
+      startx: number;
+      starty: number;
+      tintcolor: string;
+      width: number;
       x: number;
       y: number;
-      id: number;
-      tintcolor: string;
-      parallaxy: number;
-      width: number;
     }>
 > = new tg.IsInterface()
   .withProperties({
