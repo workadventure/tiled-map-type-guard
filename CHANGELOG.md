@@ -1,3 +1,12 @@
+## [1.0.2](https://github.com/workadventure/tiled-map-type-guard/compare/v1.0.1...v1.0.2) (2021-08-11)
+
+
+### Bug Fixes
+
+* Fixing animations parsing ([bad4a13](https://github.com/workadventure/tiled-map-type-guard/commit/bad4a139fcb54e5d24b57963be892d46c67f1b55))
+* Fixing isTiledMapGroupLayer type ([0d5e3b7](https://github.com/workadventure/tiled-map-type-guard/commit/0d5e3b7030b0dd00efdca6820da96da2a6b69629))
+* pointless commit to trigger CI after Github Actions was down ([170417d](https://github.com/workadventure/tiled-map-type-guard/commit/170417d2e9cb07fbbfd983d1db7436ed9b66a980))
+
 ## [1.0.1](https://github.com/workadventure/tiled-map-type-guard/compare/v1.0.0...v1.0.1) (2021-08-10)
 
 
