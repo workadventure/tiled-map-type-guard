@@ -1,4 +1,4 @@
-# Tiled map type guard
+# Tiled map type guards
 
 ![Github Actions](https://github.com/workadventure/tiled-map-type-guard/workflows/Release/badge.svg) [![codecov](https://codecov.io/gh/workadventure/tiled-map-type-guard/branch/main/graph/badge.svg?token=UCCA6D6JCB)](https://codecov.io/gh/workadventure/tiled-map-type-guard)
 
