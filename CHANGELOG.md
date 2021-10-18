@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/workadventure/tiled-map-type-guard/compare/v1.0.2...v1.0.3) (2021-10-18)
+
+
+### Bug Fixes
+
+* Fixing a circular dependency in type checking for isITiledMapGroupLayer ([f0edc70](https://github.com/workadventure/tiled-map-type-guard/commit/f0edc700c58a064cf275f10b37d23c7ced162b34))
+
 ## [1.0.2](https://github.com/workadventure/tiled-map-type-guard/compare/v1.0.1...v1.0.2) (2021-08-11)
 
 
