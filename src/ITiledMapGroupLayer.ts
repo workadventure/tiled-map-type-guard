@@ -1,8 +1,13 @@
 import * as tg from 'generic-type-guard';
 import { isTiledMapProperty, ITiledMapProperty } from './ITiledMapProperty';
-import { isTiledMapLayer, ITiledMapLayer } from './ITiledMapLayer';
+import type { ITiledMapLayer } from './ITiledMapLayer';
 import { TypeGuard } from 'generic-type-guard';
 /* eslint-disable @typescript-eslint/ban-types */
+
+let circularDependencyBreaker: TypeGuard<unknown> = tg.isNumber;
+export const setIsTiledMapLayer = (newFunction: TypeGuard<unknown>): void => {
+  circularDependencyBreaker = newFunction;
+};
 
 export const isTiledMapGroupLayer: TypeGuard<
   object & {
@@ -30,10 +35,9 @@ export const isTiledMapGroupLayer: TypeGuard<
 > = new tg.IsInterface()
   .withProperties({
     name: tg.isString,
-    //layers: tg.isTiledMapLayer,
     opacity: tg.isNumber,
     type: tg.isSingletonString('group'),
-    layers: tg.isArray(isTiledMapLayer),
+    layers: tg.isArray((param): param is ITiledMapLayer => circularDependencyBreaker(param)),
     visible: tg.isBoolean,
   })
   .withOptionalProperties({
