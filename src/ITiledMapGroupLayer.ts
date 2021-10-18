@@ -2,13 +2,13 @@ import * as tg from 'generic-type-guard';
 import { isTiledMapProperty, ITiledMapProperty } from './ITiledMapProperty';
 import type { ITiledMapLayer } from './ITiledMapLayer';
 import { TypeGuard } from 'generic-type-guard';
+/* eslint-disable @typescript-eslint/ban-types */
 
 let circularDependencyBreaker: TypeGuard<unknown> = tg.isNumber;
 export const setIsTiledMapLayer = (newFunction: TypeGuard<unknown>): void => {
   circularDependencyBreaker = newFunction;
 };
 
-/* eslint-disable @typescript-eslint/ban-types */
 export const isTiledMapGroupLayer: TypeGuard<
   object & {
     opacity: number;
