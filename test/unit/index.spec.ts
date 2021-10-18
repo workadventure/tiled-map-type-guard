@@ -1,11 +1,12 @@
-import { isTiledMapProperty, ITiledMapProperty } from '../../src/ITiledMapProperty';
-import { isTiledMapChunk, ITiledMapChunk } from '../../src/ITiledMapChunk';
-import { isTiledMapTileLayer, ITiledMapTileLayer } from '../../src/ITiledMapTileLayer';
-import { isTiledMapLayer } from '../../src/ITiledMapLayer';
-import { isTiledMapObjectLayer, ITiledMapObjectLayer } from '../../src/ITiledMapObjectLayer';
-import { isTiledMapImageLayer } from '../../src/ITiledMapImageLayer';
-import { isTiledMap, ITiledMap } from '../../src/ITiledMap';
-import { isTiledMapTileset, ITiledMapTileset } from '../../src/ITiledMapTileset';
+import { isTiledMapProperty, ITiledMapProperty } from '../../src/index';
+import { isTiledMapChunk, ITiledMapChunk } from '../../src/index';
+import { isTiledMapTileLayer, ITiledMapTileLayer } from '../../src/index';
+import { isTiledMapLayer } from '../../src/index';
+import { isTiledMapObjectLayer, ITiledMapObjectLayer } from '../../src/index';
+import { isTiledMapImageLayer } from '../../src/index';
+import { isTiledMap, ITiledMap } from '../../src/index';
+import { isTiledMapTileset, ITiledMapTileset } from '../../src/index';
+import { isTiledMapGroupLayer, ITiledMapGroupLayer } from '../../src/index';
 
 describe('Test ITiledMapProperty type guard', () => {
   it('should pass', () => {
@@ -357,6 +358,45 @@ describe('Test ITiledMapObjectLayer type guard', () => {
     } as ITiledMapObjectLayer;
     expect(isTiledMapLayer(property)).toBe(true);
     expect(isTiledMapObjectLayer(property)).toBe(true);
+    expect(isTiledMapImageLayer(property)).toBe(false);
+  });
+});
+
+describe('Test ITiledMapGroupLayer type guard', () => {
+  it('should pass', () => {
+    const tileLayer = {
+      data: [
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1,
+      ],
+      height: 10,
+      id: 1,
+      name: 'floor',
+      opacity: 1,
+      type: 'tilelayer',
+      visible: true,
+      width: 10,
+      x: 0,
+      y: 0,
+    };
+
+    expect(isTiledMapLayer(tileLayer)).toBe(true);
+
+    const property = {
+      id: 7,
+      layers: [tileLayer],
+      name: 'Group 2',
+      opacity: 1,
+      type: 'group',
+      visible: true,
+      x: 0,
+      y: 0,
+    } as ITiledMapGroupLayer;
+
+    expect(isTiledMapGroupLayer(property)).toBe(true);
+    expect(isTiledMapLayer(property)).toBe(true);
     expect(isTiledMapImageLayer(property)).toBe(false);
   });
 });
