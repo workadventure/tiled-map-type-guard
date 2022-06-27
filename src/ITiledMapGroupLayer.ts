@@ -1,61 +1,55 @@
-import * as tg from 'generic-type-guard';
+import { z } from 'zod';
 import { isTiledMapProperty, ITiledMapProperty } from './ITiledMapProperty';
-import type { ITiledMapLayer } from './ITiledMapLayer';
-import { TypeGuard } from 'generic-type-guard';
-/* eslint-disable @typescript-eslint/ban-types */
+import { isTiledMapLayer, ITiledMapLayer } from './ITiledMapLayer';
 
-let circularDependencyBreaker: TypeGuard<unknown> = tg.isNumber;
-export const setIsTiledMapLayer = (newFunction: TypeGuard<unknown>): void => {
-  circularDependencyBreaker = newFunction;
-};
+interface TiledMapGroupLayerOptional {
+  height: number;
+  draworder: string;
+  id: number;
+  offsetx: number;
+  offsety: number;
+  parallaxx: number;
+  parallaxy: number;
+  properties: ITiledMapProperty[];
+  startx: number;
+  starty: number;
+  tintcolor: string;
+  width: number;
+  x: number;
+  y: number;
+}
 
-export const isTiledMapGroupLayer: TypeGuard<
-  object & {
-    opacity: number;
-    name: string;
-    visible: boolean;
-    type: 'group';
-    layers: ITiledMapLayer[];
-  } & Partial<{
-      height: number;
-      draworder: string;
-      id: number;
-      offsetx: number;
-      offsety: number;
-      parallaxx: number;
-      parallaxy: number;
-      properties: ITiledMapProperty[];
-      startx: number;
-      starty: number;
-      tintcolor: string;
-      width: number;
-      x: number;
-      y: number;
-    }>
-> = new tg.IsInterface()
-  .withProperties({
-    name: tg.isString,
-    opacity: tg.isNumber,
-    type: tg.isSingletonString('group'),
-    layers: tg.isArray((param): param is ITiledMapLayer => circularDependencyBreaker(param)),
-    visible: tg.isBoolean,
-  })
-  .withOptionalProperties({
-    height: tg.isNumber,
-    draworder: tg.isString,
-    id: tg.isNumber,
-    offsetx: tg.isNumber,
-    offsety: tg.isNumber,
-    parallaxx: tg.isNumber,
-    parallaxy: tg.isNumber,
-    properties: tg.isArray(isTiledMapProperty),
-    startx: tg.isNumber,
-    starty: tg.isNumber,
-    tintcolor: tg.isString,
-    width: tg.isNumber,
-    x: tg.isNumber,
-    y: tg.isNumber,
-  })
-  .get();
+export interface TiledMapGroupLayer extends Partial<TiledMapGroupLayerOptional> {
+  opacity: number;
+  name: string;
+  visible: boolean;
+  type: 'group';
+  layers: ITiledMapLayer[];
+}
 
-export type ITiledMapGroupLayer = tg.GuardedType<typeof isTiledMapGroupLayer>;
+export const isTiledMapGroupLayer: z.ZodType<TiledMapGroupLayer> = z.lazy(() =>
+  z.object({
+    name: z.string(),
+    opacity: z.number(),
+    type: z.literal('group'),
+    layers: isTiledMapLayer.array(),
+    visible: z.boolean(),
+
+    height: z.number().optional(),
+    draworder: z.string().optional(),
+    id: z.number().optional(),
+    offsetx: z.number().optional(),
+    offsety: z.number().optional(),
+    parallaxx: z.number().optional(),
+    parallaxy: z.number().optional(),
+    properties: isTiledMapProperty.array().optional(),
+    startx: z.number().optional(),
+    starty: z.number().optional(),
+    tintcolor: z.string().optional(),
+    width: z.number().optional(),
+    x: z.number().optional(),
+    y: z.number().optional(),
+  }),
+);
+
+export type ITiledMapGroupLayer = z.infer<typeof isTiledMapGroupLayer>;

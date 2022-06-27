@@ -1,33 +1,30 @@
-import * as tg from 'generic-type-guard';
+import { z } from 'zod';
 import { isTiledMapProperty } from './ITiledMapProperty';
 import { isTiledMapChunk } from './ITiledMapChunk';
 
-export const isTiledMapTileLayer = new tg.IsInterface()
-  .withProperties({
-    data: tg.isUnion(tg.isString, tg.isArray(tg.isNumber)),
-    height: tg.isNumber,
-    id: tg.isNumber,
-    name: tg.isString,
-    opacity: tg.isNumber,
-    type: tg.isSingletonString('tilelayer'),
-    visible: tg.isBoolean,
-    width: tg.isNumber,
-  })
-  .withOptionalProperties({
-    chunks: tg.isArray(isTiledMapChunk),
-    compression: tg.isString,
-    encoding: tg.isSingletonStringUnion('csv', 'base64'),
-    offsetx: tg.isNumber,
-    offsety: tg.isNumber,
-    parallaxx: tg.isNumber,
-    parallaxy: tg.isNumber,
-    properties: tg.isArray(isTiledMapProperty),
-    startx: tg.isNumber,
-    starty: tg.isNumber,
-    tintcolor: tg.isString,
-    x: tg.isNumber,
-    y: tg.isNumber,
-  })
-  .get();
+export const isTiledMapTileLayer = z.object({
+  data: z.union([z.string(), z.number().array()]),
+  height: z.number(),
+  id: z.number(),
+  name: z.string(),
+  opacity: z.number(),
+  type: z.literal('tilelayer'),
+  visible: z.boolean(),
+  width: z.number(),
 
-export type ITiledMapTileLayer = tg.GuardedType<typeof isTiledMapTileLayer>;
+  chunks: isTiledMapChunk.array().optional(),
+  compression: z.string().optional(),
+  encoding: z.enum(['csv', 'base64']).optional(),
+  offsetx: z.number().optional(),
+  offsety: z.number().optional(),
+  parallaxx: z.number().optional(),
+  parallaxy: z.number().optional(),
+  properties: isTiledMapProperty.array().optional(),
+  startx: z.number().optional(),
+  starty: z.number().optional(),
+  tintcolor: z.string().optional(),
+  x: z.number().optional(),
+  y: z.number().optional(),
+});
+
+export type ITiledMapTileLayer = z.infer<typeof isTiledMapTileLayer>;

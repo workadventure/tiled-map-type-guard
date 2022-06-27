@@ -1,28 +1,25 @@
-import * as tg from 'generic-type-guard';
+import { z } from 'zod';
 import { isTiledMapFrame } from './ITiledMapFrame';
 import { isTiledMapObjectLayer } from './ITiledMapObjectLayer';
 import { isTiledMapProperty } from './ITiledMapProperty';
 import { isTiledMapTerrain } from './ITiledMapTerrain';
 
-export const isTiledMapTile = new tg.IsInterface()
-  .withProperties({
-    id: tg.isNumber,
-  })
-  .withOptionalProperties({
-    animation: tg.isArray(isTiledMapFrame),
-    image: tg.isString,
-    imageheight: tg.isNumber,
-    imagewidth: tg.isNumber,
-    x: tg.isNumber,
-    y: tg.isNumber,
-    width: tg.isNumber,
-    height: tg.isNumber,
-    objectgroup: tg.isArray(isTiledMapObjectLayer),
-    probability: tg.isNumber,
-    properties: tg.isArray(isTiledMapProperty),
-    terrain: tg.isArray(isTiledMapTerrain),
-    type: tg.isString,
-  })
-  .get();
+export const isTiledMapTile = z.object({
+  id: z.number(),
 
-export type ITiledMapTile = tg.GuardedType<typeof isTiledMapTile>;
+  animation: isTiledMapFrame.array().optional(),
+  image: z.string().optional(),
+  imageheight: z.number().optional(),
+  imagewidth: z.number().optional(),
+  x: z.number().optional(),
+  y: z.number().optional(),
+  width: z.number().optional(),
+  height: z.number().optional(),
+  objectgroup: isTiledMapObjectLayer.array().optional(),
+  probability: z.number().optional(),
+  properties: isTiledMapProperty.array().optional(),
+  terrain: isTiledMapTerrain.array().optional(),
+  type: z.string().optional(),
+});
+
+export type ITiledMapTile = z.infer<typeof isTiledMapTile>;

@@ -15,7 +15,7 @@ describe('Test ITiledMapProperty type guard', () => {
       type: 'string',
       value: 'hello',
     };
-    expect(isTiledMapProperty(property)).toBe(true);
+    expect(isTiledMapProperty.parse(property)).toStrictEqual(property);
   });
 });
 
@@ -28,7 +28,7 @@ describe('Test ITiledMapChunk type guard', () => {
       x: 0,
       y: 0,
     };
-    expect(isTiledMapChunk(property)).toBe(true);
+    expect(isTiledMapChunk.parse(property)).toStrictEqual(property);
   });
 
   it('should accept more data', () => {
@@ -40,7 +40,7 @@ describe('Test ITiledMapChunk type guard', () => {
       y: 0,
       foo: 'bar',
     } as ITiledMapChunk;
-    expect(isTiledMapChunk(property)).toBe(true);
+    expect(isTiledMapChunk.passthrough().parse(property)).toStrictEqual(property);
   });
 });
 
@@ -63,9 +63,9 @@ describe('Test ITiledMapLayer type guard', () => {
       x: 0,
       y: 0,
     };
-    expect(isTiledMapLayer(property)).toBe(true);
-    expect(isTiledMapTileLayer(property)).toBe(true);
-    expect(isTiledMapObjectLayer(property)).toBe(false);
+    expect(isTiledMapLayer.parse(property)).toStrictEqual(property);
+    expect(isTiledMapTileLayer.parse(property)).toStrictEqual(property);
+    expect(isTiledMapObjectLayer.safeParse(property).success).toBe(false);
   });
 });
 describe('Test ITiledMapTileset type guard', () => {
@@ -235,7 +235,7 @@ describe('Test ITiledMapTileset type guard', () => {
       ],
       tilewidth: 32,
     };
-    expect(isTiledMapTileset(property)).toBe(true);
+    expect(isTiledMapTileset.parse(property)).toStrictEqual(property);
   });
 });
 
@@ -270,7 +270,7 @@ describe('Test ITiledMapObjectLayer type guard', () => {
       x: 0,
       y: 0,
     };
-    expect(isTiledMapObjectLayer(property)).toBe(true);
+    expect(isTiledMapObjectLayer.parse(property)).toStrictEqual(property);
   });
 });
 
@@ -328,7 +328,7 @@ describe('Test ITiledMapTileset animated type guard', () => {
       ],
       tilewidth: 32,
     };
-    expect(isTiledMapTileset(property)).toBe(true);
+    expect(isTiledMapTileset.parse(property)).toStrictEqual(property);
   });
 });
 
@@ -356,9 +356,9 @@ describe('Test ITiledMapObjectLayer type guard', () => {
       visible: true,
       type: 'objectgroup',
     } as ITiledMapObjectLayer;
-    expect(isTiledMapLayer(property)).toBe(true);
-    expect(isTiledMapObjectLayer(property)).toBe(true);
-    expect(isTiledMapImageLayer(property)).toBe(false);
+    expect(isTiledMapLayer.parse(property)).toStrictEqual(property);
+    expect(isTiledMapObjectLayer.parse(property)).toStrictEqual(property);
+    expect(isTiledMapImageLayer.safeParse(property).success).toStrictEqual(false);
   });
 });
 
@@ -382,7 +382,7 @@ describe('Test ITiledMapGroupLayer type guard', () => {
       y: 0,
     };
 
-    expect(isTiledMapLayer(tileLayer)).toBe(true);
+    expect(isTiledMapLayer.parse(tileLayer)).toStrictEqual(tileLayer);
 
     const property = {
       id: 7,
@@ -395,9 +395,9 @@ describe('Test ITiledMapGroupLayer type guard', () => {
       y: 0,
     } as ITiledMapGroupLayer;
 
-    expect(isTiledMapGroupLayer(property)).toBe(true);
-    expect(isTiledMapLayer(property)).toBe(true);
-    expect(isTiledMapImageLayer(property)).toBe(false);
+    expect(isTiledMapGroupLayer.parse(property)).toStrictEqual(property);
+    expect(isTiledMapLayer.parse(property)).toStrictEqual(property);
+    expect(isTiledMapImageLayer.safeParse(property).success).toBe(false);
   });
 });
 
@@ -710,6 +710,6 @@ describe('Test ITiledMap type guard', () => {
       version: 1.4,
       width: 10,
     } as ITiledMap;
-    expect(isTiledMap(property)).toBe(true);
+    expect(isTiledMap.parse(property)).toStrictEqual(property);
   });
 });

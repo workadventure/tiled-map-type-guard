@@ -1,31 +1,28 @@
-import * as tg from 'generic-type-guard';
+import { z } from 'zod';
 import { isTiledMapProperty } from './ITiledMapProperty';
 import { isTiledMapObject } from './ITiledMapObject';
 
-export const isTiledMapObjectLayer = new tg.IsInterface()
-  .withProperties({
-    name: tg.isString,
-    objects: tg.isArray(isTiledMapObject),
-    opacity: tg.isNumber,
-    type: tg.isSingletonString('objectgroup'),
-    visible: tg.isBoolean,
-  })
-  .withOptionalProperties({
-    draworder: tg.isString,
-    height: tg.isNumber,
-    id: tg.isNumber,
-    offsetx: tg.isNumber,
-    offsety: tg.isNumber,
-    parallaxx: tg.isNumber,
-    parallaxy: tg.isNumber,
-    properties: tg.isArray(isTiledMapProperty),
-    startx: tg.isNumber,
-    starty: tg.isNumber,
-    tintcolor: tg.isString,
-    width: tg.isNumber,
-    x: tg.isNumber,
-    y: tg.isNumber,
-  })
-  .get();
+export const isTiledMapObjectLayer = z.object({
+  name: z.string(),
+  objects: isTiledMapObject.array(),
+  opacity: z.number(),
+  type: z.literal('objectgroup'),
+  visible: z.boolean(),
 
-export type ITiledMapObjectLayer = tg.GuardedType<typeof isTiledMapObjectLayer>;
+  draworder: z.string().optional(),
+  height: z.number().optional(),
+  id: z.number().optional(),
+  offsetx: z.number().optional(),
+  offsety: z.number().optional(),
+  parallaxx: z.number().optional(),
+  parallaxy: z.number().optional(),
+  properties: isTiledMapProperty.array().optional(),
+  startx: z.number().optional(),
+  starty: z.number().optional(),
+  tintcolor: z.string().optional(),
+  width: z.number().optional(),
+  x: z.number().optional(),
+  y: z.number().optional(),
+});
+
+export type ITiledMapObjectLayer = z.infer<typeof isTiledMapObjectLayer>;

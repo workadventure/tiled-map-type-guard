@@ -1,10 +1,8 @@
-import * as tg from 'generic-type-guard';
+import { z } from 'zod';
 
-export const isTiledMapWangTile = new tg.IsInterface()
-  .withProperties({
-    tileid: tg.isString,
-    wangid: tg.isArray(tg.isNumber),
-  })
-  .get();
+export const isTiledMapWangTile = z.object({
+  tileid: z.string(),
+  wangid: z.number().array(),
+});
 
-export type ITiledMapWangTile = tg.GuardedType<typeof isTiledMapWangTile>;
+export type ITiledMapWangTile = z.infer<typeof isTiledMapWangTile>;

@@ -1,22 +1,19 @@
-import * as tg from 'generic-type-guard';
+import { z } from 'zod';
 
-export const isTiledMapText = new tg.IsInterface()
-  .withProperties({
-    text: tg.isString,
-  })
-  .withOptionalProperties({
-    bold: tg.isBoolean,
-    color: tg.isString,
-    fontfamily: tg.isString,
-    halign: tg.isSingletonStringUnion('center', 'right', 'justify', 'left'),
-    italic: tg.isBoolean,
-    kerning: tg.isBoolean,
-    pixelsize: tg.isNumber,
-    strikeout: tg.isBoolean,
-    underline: tg.isBoolean,
-    valign: tg.isSingletonStringUnion('center', 'bottom', 'top'),
-    wrap: tg.isBoolean,
-  })
-  .get();
+export const isTiledMapText = z.object({
+  text: z.string(),
 
-export type ITiledMapText = tg.GuardedType<typeof isTiledMapText>;
+  bold: z.boolean().optional(),
+  color: z.string().optional(),
+  fontfamily: z.string().optional(),
+  halign: z.enum(['center', 'right', 'justify', 'left']).optional(),
+  italic: z.boolean().optional(),
+  kerning: z.boolean().optional(),
+  pixelsize: z.number().optional(),
+  strikeout: z.boolean().optional(),
+  underline: z.boolean().optional(),
+  valign: z.enum(['center', 'bottom', 'top']).optional(),
+  wrap: z.boolean().optional(),
+});
+
+export type ITiledMapText = z.infer<typeof isTiledMapText>;

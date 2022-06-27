@@ -1,35 +1,31 @@
-import * as tg from 'generic-type-guard';
 import { isTiledMapProperty } from './ITiledMapProperty';
 import { isTiledMapLayer } from './ITiledMapLayer';
 import { isTiledMapTileset } from './ITiledMapTileset';
+import { z } from 'zod';
 
-export const isTiledMap = new tg.IsInterface()
-  .withProperties({
-    layers: tg.isArray(isTiledMapLayer),
-    tiledversion: tg.isString,
-    tilesets: tg.isArray(isTiledMapTileset),
-  })
-  .withOptionalProperties({
-    backgroundcolor: tg.isString,
-    compressionlevel: tg.isNumber,
-    height: tg.isNumber,
-    hexsidelength: tg.isNumber,
-    infinite: tg.isBoolean,
-    nextlayerid: tg.isNumber,
-    nextobjectid: tg.isNumber,
-    orientation: tg.isSingletonStringUnion('orthogonal', 'isometric', 'staggered', 'hexagonal'),
-    parallaxoriginx: tg.isNumber,
-    parallaxoriginy: tg.isNumber,
-    properties: tg.isArray(isTiledMapProperty),
-    renderorder: tg.isSingletonStringUnion('right-down', 'right-up', 'left-down', 'left-up'),
-    staggeraxis: tg.isSingletonStringUnion('x', 'y'),
-    staggerindex: tg.isSingletonStringUnion('odd', 'even'),
-    tileheight: tg.isNumber,
-    tilewidth: tg.isNumber,
-    type: tg.isSingletonString('map'),
-    version: tg.isUnion(tg.isString, tg.isNumber),
-    width: tg.isNumber,
-  })
-  .get();
+export const isTiledMap = z.object({
+  layers: isTiledMapLayer.array(),
+  tiledversion: z.string(),
+  tilesets: isTiledMapTileset.array(),
+  backgroundcolor: z.string().optional(),
+  compressionlevel: z.number().optional(),
+  height: z.number().optional(),
+  hexsidelength: z.number().optional(),
+  infinite: z.boolean().optional(),
+  nextlayerid: z.number().optional(),
+  nextobjectid: z.number().optional(),
+  orientation: z.enum(['orthogonal', 'isometric', 'staggered', 'hexagonal']).optional(),
+  parallaxoriginx: z.number().optional(),
+  parallaxoriginy: z.number().optional(),
+  properties: isTiledMapProperty.array().optional(),
+  renderorder: z.enum(['right-down', 'right-up', 'left-down', 'left-up']).optional(),
+  staggeraxis: z.enum(['x', 'y']).optional(),
+  staggerindex: z.enum(['odd', 'even']).optional(),
+  tileheight: z.number().optional(),
+  tilewidth: z.number().optional(),
+  type: z.literal('map').optional(),
+  version: z.union([z.string(), z.number()]).optional(),
+  width: z.number().optional(),
+});
 
-export type ITiledMap = tg.GuardedType<typeof isTiledMap>;
+export type ITiledMap = z.infer<typeof isTiledMap>;

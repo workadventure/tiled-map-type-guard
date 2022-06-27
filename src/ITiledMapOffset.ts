@@ -1,10 +1,8 @@
-import * as tg from 'generic-type-guard';
+import { z } from 'zod';
 
-export const isTiledMapOffset = new tg.IsInterface()
-  .withProperties({
-    x: tg.isNumber,
-    y: tg.isNumber,
-  })
-  .get();
+export const isTiledMapOffset = z.object({
+  x: z.number(),
+  y: z.number(),
+});
 
-export type ITiledMapOffset = tg.GuardedType<typeof isTiledMapOffset>;
+export type ITiledMapOffset = z.infer<typeof isTiledMapOffset>;

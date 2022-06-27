@@ -1,13 +1,11 @@
-import * as tg from 'generic-type-guard';
+import { z } from 'zod';
 
-export const isTiledMapChunk = new tg.IsInterface()
-  .withProperties({
-    data: tg.isUnion(tg.isString, tg.isArray(tg.isNumber)),
-    height: tg.isNumber,
-    width: tg.isNumber,
-    x: tg.isNumber,
-    y: tg.isNumber,
-  })
-  .get();
+export const isTiledMapChunk = z.object({
+  data: z.union([z.string(), z.number().array()]),
+  height: z.number(),
+  width: z.number(),
+  x: z.number(),
+  y: z.number(),
+});
 
-export type ITiledMapChunk = tg.GuardedType<typeof isTiledMapChunk>;
+export type ITiledMapChunk = z.infer<typeof isTiledMapChunk>;

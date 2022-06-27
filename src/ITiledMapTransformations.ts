@@ -1,12 +1,10 @@
-import * as tg from 'generic-type-guard';
+import { z } from 'zod';
 
-export const isTiledMapTransformations = new tg.IsInterface()
-  .withOptionalProperties({
-    hflip: tg.isBoolean,
-    vflip: tg.isBoolean,
-    rotate: tg.isBoolean,
-    preferuntransformed: tg.isBoolean,
-  })
-  .get();
+export const isTiledMapTransformations = z.object({
+  hflip: z.boolean().optional(),
+  vflip: z.boolean().optional(),
+  rotate: z.boolean().optional(),
+  preferuntransformed: z.boolean().optional(),
+});
 
-export type ITiledMapTransformations = tg.GuardedType<typeof isTiledMapTransformations>;
+export type ITiledMapTransformations = z.infer<typeof isTiledMapTransformations>;
