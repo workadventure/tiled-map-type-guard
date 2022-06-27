@@ -20,6 +20,7 @@ export const isTiledMapTile = new tg.IsInterface()
     objectgroup: tg.isArray(isTiledMapObjectLayer),
     probability: tg.isNumber,
     properties: tg.isArray(isTiledMapProperty),
+    class: tg.isString,
     terrain: tg.isArray(isTiledMapTerrain),
     type: tg.isString,
   })

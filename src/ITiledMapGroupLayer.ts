@@ -14,12 +14,13 @@ export const isTiledMapGroupLayer: TypeGuard<
     opacity: number;
     name: string;
     visible: boolean;
-    type: 'group';
     layers: ITiledMapLayer[];
+    type: 'group';
   } & Partial<{
       height: number;
       draworder: string;
       id: number;
+      class: string;
       offsetx: number;
       offsety: number;
       parallaxx: number;
@@ -36,9 +37,9 @@ export const isTiledMapGroupLayer: TypeGuard<
   .withProperties({
     name: tg.isString,
     opacity: tg.isNumber,
-    type: tg.isSingletonString('group'),
     layers: tg.isArray((param): param is ITiledMapLayer => circularDependencyBreaker(param)),
     visible: tg.isBoolean,
+    type: tg.isSingletonString('group'),
   })
   .withOptionalProperties({
     height: tg.isNumber,
@@ -53,6 +54,7 @@ export const isTiledMapGroupLayer: TypeGuard<
     starty: tg.isNumber,
     tintcolor: tg.isString,
     width: tg.isNumber,
+    class: tg.isString,
     x: tg.isNumber,
     y: tg.isNumber,
   })

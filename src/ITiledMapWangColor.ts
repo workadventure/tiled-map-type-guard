@@ -10,6 +10,8 @@ export const isTiledMapWangColor = new tg.IsInterface()
   .withOptionalProperties({
     probability: tg.isNumber,
     properties: tg.isArray(isTiledMapProperty),
+    type: tg.isString,
+    class: tg.isString,
   })
   .get();
 

@@ -37,6 +37,7 @@ export const isTiledMapTileset = new tg.IsInterface()
     transformations: isTiledMapTransformations,
     transparentcolor: tg.isString,
     type: tg.isSingletonString('tileset'),
+    class: tg.isString,
     version: tg.isUnion(tg.isString, tg.isNumber),
     wangsets: tg.isArray(isTiledMapWangSet),
   })

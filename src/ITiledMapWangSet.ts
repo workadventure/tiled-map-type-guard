@@ -12,6 +12,8 @@ export const isTiledMapWangSet = new tg.IsInterface()
     colors: tg.isArray(isTiledMapWangColor),
     properties: tg.isArray(isTiledMapProperty),
     wangtiles: tg.isArray(isTiledMapWangTile),
+    type: tg.isSingletonStringUnion('corner', 'edge', 'mixed'),
+    class: tg.isString,
   })
   .get();
 

@@ -20,3 +20,4 @@ export * from './ITiledMapTileLayer';
 export { isTiledMapGroupLayer } from './ITiledMapGroupLayer';
 export type { ITiledMapGroupLayer } from './ITiledMapGroupLayer';
 export * from './ITiledMap';
+export { upgradeMapToNewest } from './utility';

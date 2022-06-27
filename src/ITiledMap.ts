@@ -8,6 +8,7 @@ export const isTiledMap = new tg.IsInterface()
     layers: tg.isArray(isTiledMapLayer),
     tiledversion: tg.isString,
     tilesets: tg.isArray(isTiledMapTileset),
+    type: tg.isSingletonString('map'),
   })
   .withOptionalProperties({
     backgroundcolor: tg.isString,
@@ -26,7 +27,7 @@ export const isTiledMap = new tg.IsInterface()
     staggerindex: tg.isSingletonStringUnion('odd', 'even'),
     tileheight: tg.isNumber,
     tilewidth: tg.isNumber,
-    type: tg.isSingletonString('map'),
+    class: tg.isString,
     version: tg.isUnion(tg.isString, tg.isNumber),
     width: tg.isNumber,
   })

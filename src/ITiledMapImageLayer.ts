@@ -22,6 +22,7 @@ export const isTiledMapImageLayer = new tg.IsInterface()
     startx: tg.isNumber,
     starty: tg.isNumber,
     tintcolor: tg.isString,
+    class: tg.isString,
     width: tg.isNumber,
     x: tg.isNumber,
     y: tg.isNumber,

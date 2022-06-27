@@ -7,8 +7,8 @@ export const isTiledMapObjectLayer = new tg.IsInterface()
     name: tg.isString,
     objects: tg.isArray(isTiledMapObject),
     opacity: tg.isNumber,
-    type: tg.isSingletonString('objectgroup'),
     visible: tg.isBoolean,
+    type: tg.isSingletonString('objectgroup'),
   })
   .withOptionalProperties({
     draworder: tg.isString,
@@ -23,6 +23,7 @@ export const isTiledMapObjectLayer = new tg.IsInterface()
     starty: tg.isNumber,
     tintcolor: tg.isString,
     width: tg.isNumber,
+    class: tg.isString,
     x: tg.isNumber,
     y: tg.isNumber,
   })

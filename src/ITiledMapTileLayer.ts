@@ -9,9 +9,9 @@ export const isTiledMapTileLayer = new tg.IsInterface()
     id: tg.isNumber,
     name: tg.isString,
     opacity: tg.isNumber,
-    type: tg.isSingletonString('tilelayer'),
     visible: tg.isBoolean,
     width: tg.isNumber,
+    type: tg.isSingletonString('tilelayer'),
   })
   .withOptionalProperties({
     chunks: tg.isArray(isTiledMapChunk),
@@ -25,6 +25,7 @@ export const isTiledMapTileLayer = new tg.IsInterface()
     startx: tg.isNumber,
     starty: tg.isNumber,
     tintcolor: tg.isString,
+    class: tg.isString,
     x: tg.isNumber,
     y: tg.isNumber,
   })
