@@ -4,17 +4,17 @@ import { isTiledMapWangColor } from './ITiledMapWangColor';
 import { isTiledMapWangTile } from './ITiledMapWangTile';
 
 export const isTiledMapWangSet = new tg.IsInterface()
-  .withProperties({
-    name: tg.isString,
-    tile: tg.isNumber,
-  })
-  .withOptionalProperties({
-    colors: tg.isArray(isTiledMapWangColor),
-    properties: tg.isArray(isTiledMapProperty),
-    wangtiles: tg.isArray(isTiledMapWangTile),
-    type: tg.isSingletonStringUnion('corner', 'edge', 'mixed'),
-    class: tg.isString,
-  })
-  .get();
+    .withProperties({
+        name: tg.isString,
+        tile: tg.isNumber,
+    })
+    .withOptionalProperties({
+        colors: tg.isArray(isTiledMapWangColor),
+        properties: tg.isArray(isTiledMapProperty),
+        wangtiles: tg.isArray(isTiledMapWangTile),
+        type: tg.isSingletonStringUnion('corner', 'edge', 'mixed'),
+        class: tg.isString,
+    })
+    .get();
 
 export type ITiledMapWangSet = tg.GuardedType<typeof isTiledMapWangSet>;

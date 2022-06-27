@@ -5,8 +5,8 @@ import { isTiledMapObjectLayer } from './ITiledMapObjectLayer';
 import { isTiledMapImageLayer } from './ITiledMapImageLayer';
 
 export const isTiledMapLayer = tg.isUnion(
-  isTiledMapTileLayer,
-  tg.isUnion(isTiledMapGroupLayer, tg.isUnion(isTiledMapObjectLayer, isTiledMapImageLayer)),
+    isTiledMapTileLayer,
+    tg.isUnion(isTiledMapGroupLayer, tg.isUnion(isTiledMapObjectLayer, isTiledMapImageLayer)),
 );
 
 // This is used to break a circular dependency between isTiledMapLayer and isTiledMapGroupLayer

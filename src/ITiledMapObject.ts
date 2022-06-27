@@ -4,28 +4,28 @@ import { isTiledMapPoint } from './ITiledMapPoint';
 import { isTiledMapText } from './ITiledMapText';
 
 export const isTiledMapObject = new tg.IsInterface()
-  .withProperties({
-    id: tg.isNumber,
-    name: tg.isString,
-    visible: tg.isBoolean,
-    x: tg.isNumber,
-    y: tg.isNumber,
-  })
-  .withOptionalProperties({
-    ellipse: tg.isBoolean,
-    gid: tg.isBoolean,
-    height: tg.isNumber,
-    point: tg.isBoolean,
-    polygon: tg.isArray(isTiledMapPoint),
-    polyline: tg.isArray(isTiledMapPoint),
-    properties: tg.isArray(isTiledMapProperty),
-    rotation: tg.isNumber,
-    template: tg.isString,
-    text: isTiledMapText,
-    type: tg.isString,
-    class: tg.isString,
-    width: tg.isNumber,
-  })
-  .get();
+    .withProperties({
+        id: tg.isNumber,
+        name: tg.isString,
+        visible: tg.isBoolean,
+        x: tg.isNumber,
+        y: tg.isNumber,
+    })
+    .withOptionalProperties({
+        ellipse: tg.isBoolean,
+        gid: tg.isBoolean,
+        height: tg.isNumber,
+        point: tg.isBoolean,
+        polygon: tg.isArray(isTiledMapPoint),
+        polyline: tg.isArray(isTiledMapPoint),
+        properties: tg.isArray(isTiledMapProperty),
+        rotation: tg.isNumber,
+        template: tg.isString,
+        text: isTiledMapText,
+        type: tg.isString,
+        class: tg.isString,
+        width: tg.isNumber,
+    })
+    .get();
 
 export type ITiledMapObject = tg.GuardedType<typeof isTiledMapObject>;
