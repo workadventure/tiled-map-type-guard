@@ -7,7 +7,6 @@ export const isTiledMapObject = new tg.IsInterface()
   .withProperties({
     id: tg.isNumber,
     name: tg.isString,
-    type: tg.isString,
     visible: tg.isBoolean,
     x: tg.isNumber,
     y: tg.isNumber,
@@ -23,6 +22,8 @@ export const isTiledMapObject = new tg.IsInterface()
     rotation: tg.isNumber,
     template: tg.isString,
     text: isTiledMapText,
+    type: tg.isString,
+    class: tg.isString,
     width: tg.isNumber,
   })
   .get();

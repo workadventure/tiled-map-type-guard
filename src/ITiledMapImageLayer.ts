@@ -17,6 +17,8 @@ export const isTiledMapImageLayer = new tg.IsInterface()
     parallaxx: tg.isNumber,
     parallaxy: tg.isNumber,
     properties: tg.isArray(isTiledMapProperty),
+    repeatx: tg.isBoolean,
+    repeaty: tg.isBoolean,
     startx: tg.isNumber,
     starty: tg.isNumber,
     tintcolor: tg.isString,

@@ -5,9 +5,12 @@ export const isTiledMapProperty = new tg.IsInterface()
     name: tg.isString,
     type: tg.isString,
     value: tg.isUnion(
-      tg.isUnion(tg.isUnion(tg.isString, tg.isBoolean), tg.isNumber),
-      tg.isUndefined,
+      tg.isUnion(tg.isUnion(tg.isUnion(tg.isString, tg.isBoolean), tg.isNumber), tg.isUndefined),
+      tg.isObject,
     ),
+  })
+  .withOptionalProperties({
+    propertytype: tg.isString,
   })
   .get();
 

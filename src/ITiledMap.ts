@@ -18,6 +18,8 @@ export const isTiledMap = new tg.IsInterface()
     nextlayerid: tg.isNumber,
     nextobjectid: tg.isNumber,
     orientation: tg.isSingletonStringUnion('orthogonal', 'isometric', 'staggered', 'hexagonal'),
+    parallaxoriginx: tg.isNumber,
+    parallaxoriginy: tg.isNumber,
     properties: tg.isArray(isTiledMapProperty),
     renderorder: tg.isSingletonStringUnion('right-down', 'right-up', 'left-down', 'left-up'),
     staggeraxis: tg.isSingletonStringUnion('x', 'y'),

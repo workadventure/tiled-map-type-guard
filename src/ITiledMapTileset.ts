@@ -15,6 +15,7 @@ export const isTiledMapTileset = new tg.IsInterface()
   .withOptionalProperties({
     backgroundcolor: tg.isString,
     columns: tg.isNumber,
+    fillmode: tg.isSingletonStringUnion('stretch', 'preserve-aspect-fit'),
     firstgid: tg.isNumber,
     grid: isTiledMapGrid,
     id: tg.isNumber,
@@ -30,6 +31,7 @@ export const isTiledMapTileset = new tg.IsInterface()
     tiledversion: tg.isString,
     tileheight: tg.isNumber,
     tileoffset: isTiledMapOffset,
+    tilerendersize: tg.isSingletonStringUnion('tile', 'grid'),
     tiles: tg.isArray(isTiledMapTile),
     tilewidth: tg.isNumber,
     transformations: isTiledMapTransformations,
