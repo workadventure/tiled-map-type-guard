@@ -2,7 +2,7 @@ import { ITiledMap } from './ITiledMap';
 import { ITiledMapLayer } from './ITiledMapLayer';
 
 export function upgradeMapToNewest(map: ITiledMap): ITiledMap {
-    const newMap: ITiledMap = structuredClone(map);
+    const newMap: ITiledMap = JSON.parse(JSON.stringify(map));
 
     for (const layer of newMap.layers) {
         updateLayerFieldValue(layer);
