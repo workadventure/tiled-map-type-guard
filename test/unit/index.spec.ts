@@ -50,8 +50,8 @@ const map = {
         },
         {
             data: [
-                0, 0, 0, 0, 0, 0, 128, 128, 128, 128, 0, 0, 0, 0, 0, 0, 128, 128, 128, 128, 0, 0, 0,
-                0, 0, 0, 128, 128, 128, 128, 0, 0, 0, 0, 0, 0, 128, 128, 128, 128, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 116, 116, 116, 116, 0, 0, 0, 0, 0, 0, 116, 116, 116, 116, 0, 0, 0,
+                0, 0, 0, 116, 116, 116, 116, 0, 0, 0, 0, 0, 0, 116, 116, 116, 116, 0, 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             ],
@@ -80,9 +80,9 @@ const map = {
         {
             data: [
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 101, 101, 101, 101, 101, 0, 0, 0, 0, 0, 101, 101, 101, 101, 101, 0, 0, 0,
+                0, 0, 0, 89, 89, 89, 89, 89, 0, 0, 0, 0, 0, 89, 89, 89, 89, 89, 0, 0, 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             ],
             height: 10,
             id: 7,
@@ -123,12 +123,47 @@ const map = {
             x: 0,
             y: 0,
         },
+        {
+            id: 8,
+            layers: [
+                {
+                    draworder: 'topdown',
+                    id: 9,
+                    name: 'variables',
+                    objects: [
+                        {
+                            height: 0,
+                            id: 2,
+                            name: 'myvar',
+                            point: true,
+                            rotation: 0,
+                            type: 'variable',
+                            visible: true,
+                            width: 0,
+                            x: 104.31868382969,
+                            y: 69.7082793815218,
+                        },
+                    ],
+                    opacity: 1,
+                    type: 'objectgroup',
+                    visible: true,
+                    x: 0,
+                    y: 0,
+                },
+            ],
+            name: 'group',
+            opacity: 1,
+            type: 'group',
+            visible: true,
+            x: 0,
+            y: 0,
+        },
     ],
-    nextlayerid: 8,
-    nextobjectid: 2,
+    nextlayerid: 10,
+    nextobjectid: 3,
     orientation: 'orthogonal',
     renderorder: 'right-down',
-    tiledversion: '1.4.3',
+    tiledversion: '1.8.4',
     tileheight: 32,
     tilesets: [
         {
@@ -140,7 +175,7 @@ const map = {
             margin: 0,
             name: 'TDungeon',
             spacing: 0,
-            tilecount: 64,
+            tilecount: 15,
             tileheight: 32,
             tiles: [
                 {
@@ -243,6 +278,7 @@ const map = {
                         },
                     ],
                 },
+
                 {
                     id: 16,
                     properties: [
@@ -298,25 +334,23 @@ const map = {
         },
         {
             columns: 8,
-            firstgid: 65,
+            firstgid: 53,
             image: 'floortileset.png',
             imageheight: 288,
             imagewidth: 256,
             margin: 0,
             name: 'Floor',
             spacing: 0,
-            tilecount: 72,
+            tilecount: 0,
             tileheight: 32,
             tilewidth: 32,
         },
     ],
     tilewidth: 32,
     type: 'map',
-    version: 1.4,
+    version: '1.8',
     width: 10,
 } as ITiledMap;
-
-console.log(JSON.stringify(map));
 
 describe('Test ITiledMapObject upgrade to newest Tiled version', () => {
     it('should pass', () => {
@@ -724,5 +758,22 @@ describe('Test ITiledMapGroupLayer type guard', () => {
 describe('Test ITiledMap type guard', () => {
     it('should pass', () => {
         expect(isTiledMap(map)).toBe(true);
+    });
+});
+
+describe('Test ITiledMapGroupLayer type guard', () => {
+    it('should pass', () => {
+        expect(isTiledMapGroupLayer(map.layers.find((layer) => layer.type === 'group'))).toBe(true);
+    });
+});
+
+describe('Test ITiledMapObjectLayer type guard', () => {
+    it('should pass', () => {
+        expect(
+            isTiledMapObjectLayer(
+                (map.layers.find((layer) => layer.type === 'group') as ITiledMapGroupLayer)
+                    .layers[0],
+            ),
+        ).toBe(true);
     });
 });
