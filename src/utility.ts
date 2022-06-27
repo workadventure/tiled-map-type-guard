@@ -1,7 +1,7 @@
 import { ITiledMap } from './ITiledMap';
 import { ITiledMapLayer } from './ITiledMapLayer';
 
-export function parseMapTo_1_9(map: ITiledMap): ITiledMap {
+export function upgradeMapToNewest(map: ITiledMap): ITiledMap {
     const newMap: ITiledMap = structuredClone(map);
 
     for (const layer of newMap.layers) {
