@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/workadventure/tiled-map-type-guard/compare/v1.0.3...v2.0.0) (2022-06-28)
+
+
+### Features
+
+* **release:** replace gtg by zod ([659bc6b](https://github.com/workadventure/tiled-map-type-guard/commit/659bc6b1052de59eba4f30549289211d2618902f))
+
+
+### BREAKING CHANGES
+
+* **release:** Renamed the "type" attribute on tile and object interfaces to "class".
+
 ## [1.0.3](https://github.com/workadventure/tiled-map-type-guard/compare/v1.0.2...v1.0.3) (2021-10-18)
 
 
