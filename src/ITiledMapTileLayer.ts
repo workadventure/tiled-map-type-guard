@@ -23,6 +23,7 @@ export const isTiledMapTileLayer = z.object({
   startx: z.number().optional(),
   starty: z.number().optional(),
   tintcolor: z.string().optional(),
+  class: z.string().optional(),
   x: z.number().optional(),
   y: z.number().optional(),
 });

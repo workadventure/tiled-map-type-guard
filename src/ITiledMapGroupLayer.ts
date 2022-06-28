@@ -6,6 +6,7 @@ interface TiledMapGroupLayerOptional {
   height: number;
   draworder: string;
   id: number;
+  class: string;
   offsetx: number;
   offsety: number;
   parallaxx: number;
@@ -38,6 +39,7 @@ export const isTiledMapGroupLayer: z.ZodType<TiledMapGroupLayer> = z.lazy(() =>
     height: z.number().optional(),
     draworder: z.string().optional(),
     id: z.number().optional(),
+    class: z.string().optional(),
     offsetx: z.number().optional(),
     offsety: z.number().optional(),
     parallaxx: z.number().optional(),

@@ -18,6 +18,7 @@ export const isTiledMapTile = z.object({
   objectgroup: isTiledMapObjectLayer.array().optional(),
   probability: z.number().optional(),
   properties: isTiledMapProperty.array().optional(),
+  class: z.string().optional(),
   terrain: isTiledMapTerrain.array().optional(),
   type: z.string().optional(),
 });

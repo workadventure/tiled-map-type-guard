@@ -20,6 +20,7 @@ export const isTiledMapImageLayer = z.object({
   startx: z.number().optional(),
   starty: z.number().optional(),
   tintcolor: z.string().optional(),
+  class: z.string().optional(),
   width: z.number().optional(),
   x: z.number().optional(),
   y: z.number().optional(),

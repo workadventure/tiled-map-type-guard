@@ -8,6 +8,8 @@ export const isTiledMapWangColor = z.object({
 
   probability: z.number(),
   properties: isTiledMapProperty.array(),
+  type: z.string().optional(),
+  class: z.string().optional(),
 });
 
 export type ITiledMapWangColor = z.infer<typeof isTiledMapWangColor>;

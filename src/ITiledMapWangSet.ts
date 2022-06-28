@@ -10,6 +10,8 @@ export const isTiledMapWangSet = z.object({
   colors: isTiledMapWangColor.array().optional(),
   properties: isTiledMapProperty.array().optional(),
   wangtiles: isTiledMapWangTile.array().optional(),
+  type: z.enum(['corner', 'edge', 'mixed']),
+  class: z.string().optional(),
 });
 
 export type ITiledMapWangSet = z.infer<typeof isTiledMapWangSet>;

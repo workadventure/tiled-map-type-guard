@@ -21,6 +21,7 @@ export const isTiledMapObjectLayer = z.object({
   starty: z.number().optional(),
   tintcolor: z.string().optional(),
   width: z.number().optional(),
+  class: z.string().optional(),
   x: z.number().optional(),
   y: z.number().optional(),
 });

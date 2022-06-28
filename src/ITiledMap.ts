@@ -7,6 +7,7 @@ export const isTiledMap = z.object({
   layers: isTiledMapLayer.array(),
   tiledversion: z.string(),
   tilesets: isTiledMapTileset.array(),
+  type: z.literal('map'),
   backgroundcolor: z.string().optional(),
   compressionlevel: z.number().optional(),
   height: z.number().optional(),
@@ -23,7 +24,7 @@ export const isTiledMap = z.object({
   staggerindex: z.enum(['odd', 'even']).optional(),
   tileheight: z.number().optional(),
   tilewidth: z.number().optional(),
-  type: z.literal('map').optional(),
+  class: z.string().optional(),
   version: z.union([z.string(), z.number()]).optional(),
   width: z.number().optional(),
 });

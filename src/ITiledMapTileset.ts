@@ -35,6 +35,7 @@ export const isTiledMapTileset = z.object({
   transformations: isTiledMapTransformations.optional(),
   transparentcolor: z.string().optional(),
   type: z.literal('tileset').optional(),
+  class: z.string().optional(),
   version: z.union([z.string(), z.number()]).optional(),
   wangsets: isTiledMapWangSet.array().optional(),
 });
