@@ -1,18 +1,17 @@
-import * as tg from 'generic-type-guard';
+import { z } from 'zod';
 import { isTiledMapProperty } from './ITiledMapProperty';
 import { isTiledMapWangColor } from './ITiledMapWangColor';
 import { isTiledMapWangTile } from './ITiledMapWangTile';
 
-export const isTiledMapWangSet = new tg.IsInterface()
-  .withProperties({
-    name: tg.isString,
-    tile: tg.isNumber,
-  })
-  .withOptionalProperties({
-    colors: tg.isArray(isTiledMapWangColor),
-    properties: tg.isArray(isTiledMapProperty),
-    wangtiles: tg.isArray(isTiledMapWangTile),
-  })
-  .get();
+export const isTiledMapWangSet = z.object({
+  name: z.string(),
+  tile: z.number(),
 
-export type ITiledMapWangSet = tg.GuardedType<typeof isTiledMapWangSet>;
+  colors: isTiledMapWangColor.array().optional(),
+  properties: isTiledMapProperty.array().optional(),
+  wangtiles: isTiledMapWangTile.array().optional(),
+  type: z.enum(['corner', 'edge', 'mixed']),
+  class: z.string().optional(),
+});
+
+export type ITiledMapWangSet = z.infer<typeof isTiledMapWangSet>;

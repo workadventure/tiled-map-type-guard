@@ -1,14 +1,10 @@
-import * as tg from 'generic-type-guard';
+import { z } from 'zod';
 
-export const isTiledMapProperty = new tg.IsInterface()
-  .withProperties({
-    name: tg.isString,
-    type: tg.isString,
-    value: tg.isUnion(
-      tg.isUnion(tg.isUnion(tg.isString, tg.isBoolean), tg.isNumber),
-      tg.isUndefined,
-    ),
-  })
-  .get();
+export const isTiledMapProperty = z.object({
+  name: z.string(),
+  type: z.string(),
+  value: z.unknown().optional(),
+  propertytype: z.string().optional(),
+});
 
-export type ITiledMapProperty = tg.GuardedType<typeof isTiledMapProperty>;
+export type ITiledMapProperty = z.infer<typeof isTiledMapProperty>;

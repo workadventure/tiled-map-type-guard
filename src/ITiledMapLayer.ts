@@ -1,15 +1,14 @@
-import * as tg from 'generic-type-guard';
+import { z } from 'zod';
 import { isTiledMapTileLayer } from './ITiledMapTileLayer';
-import { isTiledMapGroupLayer, setIsTiledMapLayer } from './ITiledMapGroupLayer';
+import { isTiledMapGroupLayer } from './ITiledMapGroupLayer';
 import { isTiledMapObjectLayer } from './ITiledMapObjectLayer';
 import { isTiledMapImageLayer } from './ITiledMapImageLayer';
 
-export const isTiledMapLayer = tg.isUnion(
+export const isTiledMapLayer = z.union([
   isTiledMapTileLayer,
-  tg.isUnion(isTiledMapGroupLayer, tg.isUnion(isTiledMapObjectLayer, isTiledMapImageLayer)),
-);
+  isTiledMapGroupLayer,
+  isTiledMapObjectLayer,
+  isTiledMapImageLayer,
+]);
 
-// This is used to break a circular dependency between isTiledMapLayer and isTiledMapGroupLayer
-setIsTiledMapLayer(isTiledMapTileLayer);
-
-export type ITiledMapLayer = tg.GuardedType<typeof isTiledMapLayer>;
+export type ITiledMapLayer = z.infer<typeof isTiledMapLayer>;

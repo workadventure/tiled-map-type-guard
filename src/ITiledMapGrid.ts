@@ -1,11 +1,9 @@
-import * as tg from 'generic-type-guard';
+import { z } from 'zod';
 
-export const isTiledMapGrid = new tg.IsInterface()
-  .withProperties({
-    width: tg.isNumber,
-    height: tg.isNumber,
-    orientation: tg.isSingletonStringUnion('orthogonal', 'isometric'),
-  })
-  .get();
+export const isTiledMapGrid = z.object({
+  width: z.number(),
+  height: z.number(),
+  orientation: z.enum(['orthogonal', 'isometric']),
+});
 
-export type ITiledMapGrid = tg.GuardedType<typeof isTiledMapGrid>;
+export type ITiledMapGrid = z.infer<typeof isTiledMapGrid>;

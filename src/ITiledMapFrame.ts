@@ -1,10 +1,8 @@
-import * as tg from 'generic-type-guard';
+import { z } from 'zod';
 
-export const isTiledMapFrame = new tg.IsInterface()
-  .withProperties({
-    duration: tg.isNumber,
-    tileid: tg.isNumber,
-  })
-  .get();
+export const isTiledMapFrame = z.object({
+  duration: z.number(),
+  tileid: z.number(),
+});
 
-export type ITiledMapFrame = tg.GuardedType<typeof isTiledMapFrame>;
+export type ITiledMapFrame = z.infer<typeof isTiledMapFrame>;

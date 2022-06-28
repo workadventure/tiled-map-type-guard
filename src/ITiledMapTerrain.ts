@@ -1,15 +1,10 @@
-import * as tg from 'generic-type-guard';
-import { isArray } from 'generic-type-guard';
+import { z } from 'zod';
 import { isTiledMapProperty } from './ITiledMapProperty';
 
-export const isTiledMapTerrain = new tg.IsInterface()
-  .withProperties({
-    name: tg.isString,
-    tile: tg.isNumber,
-  })
-  .withOptionalProperties({
-    properties: isArray(isTiledMapProperty),
-  })
-  .get();
+export const isTiledMapTerrain = z.object({
+  name: z.string(),
+  tile: z.number(),
+  properties: isTiledMapProperty.array().optional(),
+});
 
-export type ITiledMapTerrain = tg.GuardedType<typeof isTiledMapTerrain>;
+export type ITiledMapTerrain = z.infer<typeof isTiledMapTerrain>;

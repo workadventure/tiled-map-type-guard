@@ -1,10 +1,8 @@
-import * as tg from 'generic-type-guard';
+import { z } from 'zod';
 
-export const isTiledMapPoint = new tg.IsInterface()
-  .withProperties({
-    x: tg.isNumber,
-    y: tg.isNumber,
-  })
-  .get();
+export const isTiledMapPoint = z.object({
+  x: z.number(),
+  y: z.number(),
+});
 
-export type ITiledMapPoint = tg.GuardedType<typeof isTiledMapPoint>;
+export type ITiledMapPoint = z.infer<typeof isTiledMapPoint>;
