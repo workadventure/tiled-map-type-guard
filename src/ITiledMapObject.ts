@@ -11,7 +11,7 @@ export const ITiledMapObject = z.object({
   y: z.number(),
 
   ellipse: z.boolean().optional(),
-  gid: z.boolean().optional(),
+  gid: z.number().optional(),
   height: z.number().optional(),
   point: z.boolean().optional(),
   polygon: ITiledMapPoint.array().optional(),
