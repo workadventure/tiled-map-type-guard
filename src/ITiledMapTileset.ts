@@ -1,13 +1,13 @@
 import { z } from 'zod';
-import { isTiledMapProperty } from './ITiledMapProperty';
-import { isTiledMapTerrain } from './ITiledMapTerrain';
-import { isTiledMapGrid } from './ITiledMapGrid';
-import { isTiledMapOffset } from './ITiledMapOffset';
-import { isTiledMapTile } from './ITiledMapTile';
-import { isTiledMapTransformations } from './ITiledMapTransformations';
-import { isTiledMapWangSet } from './ITiledMapWangSet';
+import { ITiledMapProperty } from './ITiledMapProperty';
+import { ITiledMapTerrain } from './ITiledMapTerrain';
+import { ITiledMapGrid } from './ITiledMapGrid';
+import { ITiledMapOffset } from './ITiledMapOffset';
+import { ITiledMapTile } from './ITiledMapTile';
+import { ITiledMapTransformations } from './ITiledMapTransformations';
+import { ITiledMapWangSet } from './ITiledMapWangSet';
 
-export const isTiledMapTileset = z.object({
+export const ITiledMapTileset = z.object({
   name: z.string(),
   image: z.string(),
 
@@ -15,29 +15,29 @@ export const isTiledMapTileset = z.object({
   columns: z.number().optional(),
   fillmode: z.enum(['stretch', 'preserve-aspect-fit']).optional(),
   firstgid: z.number().optional(),
-  grid: isTiledMapGrid.optional(),
+  grid: ITiledMapGrid.optional(),
   id: z.number().optional(),
   imageheight: z.number().optional(),
   imagewidth: z.number().optional(),
   margin: z.number().optional(),
   objectalignment: z.string().optional(),
-  properties: isTiledMapProperty.array().optional(),
+  properties: ITiledMapProperty.array().optional(),
   source: z.string().optional(),
   spacing: z.number().optional(),
-  terrains: isTiledMapTerrain.array().optional(),
+  terrains: ITiledMapTerrain.array().optional(),
   tilecount: z.number().optional(),
   tiledversion: z.string().optional(),
   tileheight: z.number().optional(),
-  tileoffset: isTiledMapOffset.optional(),
+  tileoffset: ITiledMapOffset.optional(),
   tilerendersize: z.enum(['tile', 'grid']).optional(),
-  tiles: isTiledMapTile.array().optional(),
+  tiles: ITiledMapTile.array().optional(),
   tilewidth: z.number().optional(),
-  transformations: isTiledMapTransformations.optional(),
+  transformations: ITiledMapTransformations.optional(),
   transparentcolor: z.string().optional(),
   type: z.literal('tileset').optional(),
   class: z.string().optional(),
   version: z.union([z.string(), z.number()]).optional(),
-  wangsets: isTiledMapWangSet.array().optional(),
+  wangsets: ITiledMapWangSet.array().optional(),
 });
 
-export type ITiledMapTileset = z.infer<typeof isTiledMapTileset>;
+export type ITiledMapTileset = z.infer<typeof ITiledMapTileset>;

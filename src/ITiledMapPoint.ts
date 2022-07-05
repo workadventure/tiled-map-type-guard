@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
-export const isTiledMapPoint = z.object({
+export const ITiledMapPoint = z.object({
   x: z.number(),
   y: z.number(),
 });
 
-export type ITiledMapPoint = z.infer<typeof isTiledMapPoint>;
+export type ITiledMapPoint = z.infer<typeof ITiledMapPoint>;

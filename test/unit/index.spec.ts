@@ -1,12 +1,12 @@
-import { isTiledMapProperty, ITiledMapProperty, upgradeMapToNewest } from '../../src/index';
-import { isTiledMapChunk, ITiledMapChunk } from '../../src/index';
-import { isTiledMapTileLayer, ITiledMapTileLayer } from '../../src/index';
-import { isTiledMapLayer } from '../../src/index';
-import { isTiledMapObjectLayer, ITiledMapObjectLayer } from '../../src/index';
-import { isTiledMapImageLayer } from '../../src/index';
-import { isTiledMap, ITiledMap } from '../../src/index';
-import { isTiledMapTileset, ITiledMapTileset } from '../../src/index';
-import { isTiledMapGroupLayer, ITiledMapGroupLayer } from '../../src/index';
+import { ITiledMapProperty, upgradeMapToNewest } from '../../src/index';
+import { ITiledMapChunk } from '../../src/index';
+import { ITiledMapTileLayer } from '../../src/index';
+import { ITiledMapLayer } from '../../src/index';
+import { ITiledMapObjectLayer } from '../../src/index';
+import { ITiledMapImageLayer } from '../../src/index';
+import { ITiledMap } from '../../src/index';
+import { ITiledMapTileset } from '../../src/index';
+import { ITiledMapGroupLayer } from '../../src/index';
 
 const map = {
   compressionlevel: -1,
@@ -369,7 +369,7 @@ describe('Test ITiledMapProperty type guard', () => {
       type: 'string',
       value: 'hello',
     };
-    expect(isTiledMapProperty.parse(property)).toStrictEqual(property);
+    expect(ITiledMapProperty.parse(property)).toStrictEqual(property);
   });
 });
 
@@ -382,7 +382,7 @@ describe('Test ITiledMapChunk type guard', () => {
       x: 0,
       y: 0,
     };
-    expect(isTiledMapChunk.parse(property)).toStrictEqual(property);
+    expect(ITiledMapChunk.parse(property)).toStrictEqual(property);
   });
 
   it('should accept more data', () => {
@@ -394,7 +394,7 @@ describe('Test ITiledMapChunk type guard', () => {
       y: 0,
       foo: 'bar',
     } as ITiledMapChunk;
-    expect(isTiledMapChunk.passthrough().parse(property)).toStrictEqual(property);
+    expect(ITiledMapChunk.passthrough().parse(property)).toStrictEqual(property);
   });
 });
 
@@ -417,9 +417,9 @@ describe('Test ITiledMapLayer type guard', () => {
       x: 0,
       y: 0,
     };
-    expect(isTiledMapLayer.parse(property)).toStrictEqual(property);
-    expect(isTiledMapTileLayer.parse(property)).toStrictEqual(property);
-    expect(isTiledMapObjectLayer.safeParse(property).success).toBe(false);
+    expect(ITiledMapLayer.parse(property)).toStrictEqual(property);
+    expect(ITiledMapTileLayer.parse(property)).toStrictEqual(property);
+    expect(ITiledMapObjectLayer.safeParse(property).success).toBe(false);
   });
 });
 describe('Test ITiledMapTileset type guard', () => {
@@ -589,7 +589,7 @@ describe('Test ITiledMapTileset type guard', () => {
       ],
       tilewidth: 32,
     };
-    expect(isTiledMapTileset.parse(property)).toStrictEqual(property);
+    expect(ITiledMapTileset.parse(property)).toStrictEqual(property);
   });
 });
 
@@ -624,7 +624,7 @@ describe('Test ITiledMapObjectLayer type guard', () => {
       x: 0,
       y: 0,
     };
-    expect(isTiledMapObjectLayer.parse(property)).toStrictEqual(property);
+    expect(ITiledMapObjectLayer.parse(property)).toStrictEqual(property);
   });
 });
 
@@ -682,7 +682,7 @@ describe('Test ITiledMapTileset animated type guard', () => {
       ],
       tilewidth: 32,
     };
-    expect(isTiledMapTileset.parse(property)).toStrictEqual(property);
+    expect(ITiledMapTileset.parse(property)).toStrictEqual(property);
   });
 });
 
@@ -710,9 +710,9 @@ describe('Test ITiledMapObjectLayer type guard', () => {
       visible: true,
       type: 'objectgroup',
     } as ITiledMapObjectLayer;
-    expect(isTiledMapLayer.parse(property)).toStrictEqual(property);
-    expect(isTiledMapObjectLayer.parse(property)).toStrictEqual(property);
-    expect(isTiledMapImageLayer.safeParse(property).success).toBe(false);
+    expect(ITiledMapLayer.parse(property)).toStrictEqual(property);
+    expect(ITiledMapObjectLayer.parse(property)).toStrictEqual(property);
+    expect(ITiledMapImageLayer.safeParse(property).success).toBe(false);
   });
 });
 
@@ -736,7 +736,7 @@ describe('Test ITiledMapGroupLayer type guard', () => {
       y: 0,
     };
 
-    expect(isTiledMapLayer.parse(tileLayer)).toStrictEqual(tileLayer);
+    expect(ITiledMapLayer.parse(tileLayer)).toStrictEqual(tileLayer);
 
     const property = {
       id: 7,
@@ -749,30 +749,30 @@ describe('Test ITiledMapGroupLayer type guard', () => {
       y: 0,
     } as ITiledMapGroupLayer;
 
-    expect(isTiledMapGroupLayer.parse(property)).toStrictEqual(property);
-    expect(isTiledMapLayer.parse(property)).toStrictEqual(property);
-    expect(isTiledMapImageLayer.safeParse(property).success).toBe(false);
+    expect(ITiledMapGroupLayer.parse(property)).toStrictEqual(property);
+    expect(ITiledMapLayer.parse(property)).toStrictEqual(property);
+    expect(ITiledMapImageLayer.safeParse(property).success).toBe(false);
   });
 });
 
 describe('Test ITiledMap type guard', () => {
   it('should pass', () => {
-    expect(isTiledMap.parse(map)).toStrictEqual(map);
+    expect(ITiledMap.parse(map)).toStrictEqual(map);
   });
 });
 
 describe('Test ITiledMapGroupLayer type guard', () => {
   it('should pass', () => {
     const group = map.layers.find((layer) => layer.type === 'group');
-    expect(isTiledMapGroupLayer.parse(group)).toStrictEqual(group);
+    expect(ITiledMapGroupLayer.parse(group)).toStrictEqual(group);
   });
 });
 
 describe('Test ITiledMapObjectLayer type guard', () => {
   it('should pass', () => {
-    const group = isTiledMapGroupLayer.parse(map.layers.find((layer) => layer.type === 'group'));
+    const group = ITiledMapGroupLayer.parse(map.layers.find((layer) => layer.type === 'group'));
     const layer = group.layers[0];
 
-    expect(isTiledMapObjectLayer.parse(layer)).toStrictEqual(layer);
+    expect(ITiledMapObjectLayer.parse(layer)).toStrictEqual(layer);
   });
 });

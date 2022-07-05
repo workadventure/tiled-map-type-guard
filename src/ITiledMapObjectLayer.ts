@@ -1,10 +1,10 @@
 import { z } from 'zod';
-import { isTiledMapProperty } from './ITiledMapProperty';
-import { isTiledMapObject } from './ITiledMapObject';
+import { ITiledMapProperty } from './ITiledMapProperty';
+import { ITiledMapObject } from './ITiledMapObject';
 
-export const isTiledMapObjectLayer = z.object({
+export const ITiledMapObjectLayer = z.object({
   name: z.string(),
-  objects: isTiledMapObject.array(),
+  objects: ITiledMapObject.array(),
   opacity: z.number(),
   type: z.literal('objectgroup'),
   visible: z.boolean(),
@@ -16,7 +16,7 @@ export const isTiledMapObjectLayer = z.object({
   offsety: z.number().optional(),
   parallaxx: z.number().optional(),
   parallaxy: z.number().optional(),
-  properties: isTiledMapProperty.array().optional(),
+  properties: ITiledMapProperty.array().optional(),
   startx: z.number().optional(),
   starty: z.number().optional(),
   tintcolor: z.string().optional(),
@@ -26,4 +26,4 @@ export const isTiledMapObjectLayer = z.object({
   y: z.number().optional(),
 });
 
-export type ITiledMapObjectLayer = z.infer<typeof isTiledMapObjectLayer>;
+export type ITiledMapObjectLayer = z.infer<typeof ITiledMapObjectLayer>;

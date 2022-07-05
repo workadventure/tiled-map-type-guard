@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const isTiledMapText = z.object({
+export const ITiledMapText = z.object({
   text: z.string(),
 
   bold: z.boolean().optional(),
@@ -16,4 +16,4 @@ export const isTiledMapText = z.object({
   wrap: z.boolean().optional(),
 });
 
-export type ITiledMapText = z.infer<typeof isTiledMapText>;
+export type ITiledMapText = z.infer<typeof ITiledMapText>;

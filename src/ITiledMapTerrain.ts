@@ -1,10 +1,10 @@
 import { z } from 'zod';
-import { isTiledMapProperty } from './ITiledMapProperty';
+import { ITiledMapProperty } from './ITiledMapProperty';
 
-export const isTiledMapTerrain = z.object({
+export const ITiledMapTerrain = z.object({
   name: z.string(),
   tile: z.number(),
-  properties: isTiledMapProperty.array().optional(),
+  properties: ITiledMapProperty.array().optional(),
 });
 
-export type ITiledMapTerrain = z.infer<typeof isTiledMapTerrain>;
+export type ITiledMapTerrain = z.infer<typeof ITiledMapTerrain>;

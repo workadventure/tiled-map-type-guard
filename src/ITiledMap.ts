@@ -1,12 +1,12 @@
-import { isTiledMapProperty } from './ITiledMapProperty';
-import { isTiledMapLayer } from './ITiledMapLayer';
-import { isTiledMapTileset } from './ITiledMapTileset';
+import { ITiledMapProperty } from './ITiledMapProperty';
+import { ITiledMapLayer } from './ITiledMapLayer';
+import { ITiledMapTileset } from './ITiledMapTileset';
 import { z } from 'zod';
 
-export const isTiledMap = z.object({
-  layers: isTiledMapLayer.array(),
+export const ITiledMap = z.object({
+  layers: ITiledMapLayer.array(),
   tiledversion: z.string(),
-  tilesets: isTiledMapTileset.array(),
+  tilesets: ITiledMapTileset.array(),
   type: z.literal('map'),
   backgroundcolor: z.string().optional(),
   compressionlevel: z.number().optional(),
@@ -18,7 +18,7 @@ export const isTiledMap = z.object({
   orientation: z.enum(['orthogonal', 'isometric', 'staggered', 'hexagonal']).optional(),
   parallaxoriginx: z.number().optional(),
   parallaxoriginy: z.number().optional(),
-  properties: isTiledMapProperty.array().optional(),
+  properties: ITiledMapProperty.array().optional(),
   renderorder: z.enum(['right-down', 'right-up', 'left-down', 'left-up']).optional(),
   staggeraxis: z.enum(['x', 'y']).optional(),
   staggerindex: z.enum(['odd', 'even']).optional(),
@@ -29,4 +29,4 @@ export const isTiledMap = z.object({
   width: z.number().optional(),
 });
 
-export type ITiledMap = z.infer<typeof isTiledMap>;
+export type ITiledMap = z.infer<typeof ITiledMap>;

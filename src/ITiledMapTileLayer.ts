@@ -1,8 +1,8 @@
 import { z } from 'zod';
-import { isTiledMapProperty } from './ITiledMapProperty';
-import { isTiledMapChunk } from './ITiledMapChunk';
+import { ITiledMapProperty } from './ITiledMapProperty';
+import { ITiledMapChunk } from './ITiledMapChunk';
 
-export const isTiledMapTileLayer = z.object({
+export const ITiledMapTileLayer = z.object({
   data: z.union([z.string(), z.number().array()]),
   height: z.number(),
   id: z.number(),
@@ -12,14 +12,14 @@ export const isTiledMapTileLayer = z.object({
   visible: z.boolean(),
   width: z.number(),
 
-  chunks: isTiledMapChunk.array().optional(),
+  chunks: ITiledMapChunk.array().optional(),
   compression: z.string().optional(),
   encoding: z.enum(['csv', 'base64']).optional(),
   offsetx: z.number().optional(),
   offsety: z.number().optional(),
   parallaxx: z.number().optional(),
   parallaxy: z.number().optional(),
-  properties: isTiledMapProperty.array().optional(),
+  properties: ITiledMapProperty.array().optional(),
   startx: z.number().optional(),
   starty: z.number().optional(),
   tintcolor: z.string().optional(),
@@ -28,4 +28,4 @@ export const isTiledMapTileLayer = z.object({
   y: z.number().optional(),
 });
 
-export type ITiledMapTileLayer = z.infer<typeof isTiledMapTileLayer>;
+export type ITiledMapTileLayer = z.infer<typeof ITiledMapTileLayer>;

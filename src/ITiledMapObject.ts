@@ -1,9 +1,9 @@
 import { z } from 'zod';
-import { isTiledMapProperty } from './ITiledMapProperty';
-import { isTiledMapPoint } from './ITiledMapPoint';
-import { isTiledMapText } from './ITiledMapText';
+import { ITiledMapProperty } from './ITiledMapProperty';
+import { ITiledMapPoint } from './ITiledMapPoint';
+import { ITiledMapText } from './ITiledMapText';
 
-export const isTiledMapObject = z.object({
+export const ITiledMapObject = z.object({
   id: z.number(),
   name: z.string(),
   visible: z.boolean(),
@@ -14,15 +14,15 @@ export const isTiledMapObject = z.object({
   gid: z.boolean().optional(),
   height: z.number().optional(),
   point: z.boolean().optional(),
-  polygon: isTiledMapPoint.array().optional(),
-  polyline: isTiledMapPoint.array().optional(),
-  properties: isTiledMapProperty.array().optional(),
+  polygon: ITiledMapPoint.array().optional(),
+  polyline: ITiledMapPoint.array().optional(),
+  properties: ITiledMapProperty.array().optional(),
   rotation: z.number().optional(),
   template: z.string().optional(),
-  text: isTiledMapText.optional(),
+  text: ITiledMapText.optional(),
   type: z.string().optional(),
   class: z.string().optional(),
   width: z.number().optional(),
 });
 
-export type ITiledMapObject = z.infer<typeof isTiledMapObject>;
+export type ITiledMapObject = z.infer<typeof ITiledMapObject>;
