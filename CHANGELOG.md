@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/workadventure/tiled-map-type-guard/compare/v2.0.0...v2.0.1) (2022-07-05)
+
+
+### Bug Fixes
+
+* Adding stricter types for properties ([#12](https://github.com/workadventure/tiled-map-type-guard/issues/12)) ([b688a02](https://github.com/workadventure/tiled-map-type-guard/commit/b688a02992f413d70b18f2599fa4f2c0b5f3f05e))
+
 # [2.0.0](https://github.com/workadventure/tiled-map-type-guard/compare/v1.0.3...v2.0.0) (2022-06-28)
 
 
