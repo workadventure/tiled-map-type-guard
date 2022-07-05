@@ -17,7 +17,6 @@ export * from './ITiledMapWangColor';
 export * from './ITiledMapWangSet';
 export * from './ITiledMapWangTile';
 export * from './ITiledMapTileLayer';
-export { isTiledMapGroupLayer } from './ITiledMapGroupLayer';
-export type { ITiledMapGroupLayer } from './ITiledMapGroupLayer';
+export { ITiledMapGroupLayer } from './ITiledMapGroupLayer';
 export * from './ITiledMap';
 export { upgradeMapToNewest } from './utility';

@@ -1,9 +1,9 @@
 import { z } from 'zod';
 
-export const isTiledMapGrid = z.object({
+export const ITiledMapGrid = z.object({
   width: z.number(),
   height: z.number(),
   orientation: z.enum(['orthogonal', 'isometric']),
 });
 
-export type ITiledMapGrid = z.infer<typeof isTiledMapGrid>;
+export type ITiledMapGrid = z.infer<typeof ITiledMapGrid>;

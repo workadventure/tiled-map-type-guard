@@ -1,17 +1,17 @@
 import { z } from 'zod';
-import { isTiledMapProperty } from './ITiledMapProperty';
-import { isTiledMapWangColor } from './ITiledMapWangColor';
-import { isTiledMapWangTile } from './ITiledMapWangTile';
+import { ITiledMapProperty } from './ITiledMapProperty';
+import { ITiledMapWangColor } from './ITiledMapWangColor';
+import { ITiledMapWangTile } from './ITiledMapWangTile';
 
-export const isTiledMapWangSet = z.object({
+export const ITiledMapWangSet = z.object({
   name: z.string(),
   tile: z.number(),
 
-  colors: isTiledMapWangColor.array().optional(),
-  properties: isTiledMapProperty.array().optional(),
-  wangtiles: isTiledMapWangTile.array().optional(),
+  colors: ITiledMapWangColor.array().optional(),
+  properties: ITiledMapProperty.array().optional(),
+  wangtiles: ITiledMapWangTile.array().optional(),
   type: z.enum(['corner', 'edge', 'mixed']),
   class: z.string().optional(),
 });
 
-export type ITiledMapWangSet = z.infer<typeof isTiledMapWangSet>;
+export type ITiledMapWangSet = z.infer<typeof ITiledMapWangSet>;

@@ -1,15 +1,15 @@
 import { z } from 'zod';
-import { isTiledMapProperty } from './ITiledMapProperty';
+import { ITiledMapProperty } from './ITiledMapProperty';
 
-export const isTiledMapWangColor = z.object({
+export const ITiledMapWangColor = z.object({
   name: z.string(),
   color: z.string(),
   tile: z.number(),
 
   probability: z.number(),
-  properties: isTiledMapProperty.array(),
+  properties: ITiledMapProperty.array(),
   type: z.string().optional(),
   class: z.string().optional(),
 });
 
-export type ITiledMapWangColor = z.infer<typeof isTiledMapWangColor>;
+export type ITiledMapWangColor = z.infer<typeof ITiledMapWangColor>;

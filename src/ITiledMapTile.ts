@@ -1,13 +1,13 @@
 import { z } from 'zod';
-import { isTiledMapFrame } from './ITiledMapFrame';
-import { isTiledMapObjectLayer } from './ITiledMapObjectLayer';
-import { isTiledMapProperty } from './ITiledMapProperty';
-import { isTiledMapTerrain } from './ITiledMapTerrain';
+import { ITiledMapFrame } from './ITiledMapFrame';
+import { ITiledMapObjectLayer } from './ITiledMapObjectLayer';
+import { ITiledMapProperty } from './ITiledMapProperty';
+import { ITiledMapTerrain } from './ITiledMapTerrain';
 
-export const isTiledMapTile = z.object({
+export const ITiledMapTile = z.object({
   id: z.number(),
 
-  animation: isTiledMapFrame.array().optional(),
+  animation: ITiledMapFrame.array().optional(),
   image: z.string().optional(),
   imageheight: z.number().optional(),
   imagewidth: z.number().optional(),
@@ -15,12 +15,12 @@ export const isTiledMapTile = z.object({
   y: z.number().optional(),
   width: z.number().optional(),
   height: z.number().optional(),
-  objectgroup: isTiledMapObjectLayer.array().optional(),
+  objectgroup: ITiledMapObjectLayer.array().optional(),
   probability: z.number().optional(),
-  properties: isTiledMapProperty.array().optional(),
+  properties: ITiledMapProperty.array().optional(),
   class: z.string().optional(),
-  terrain: isTiledMapTerrain.array().optional(),
+  terrain: ITiledMapTerrain.array().optional(),
   type: z.string().optional(),
 });
 
-export type ITiledMapTile = z.infer<typeof isTiledMapTile>;
+export type ITiledMapTile = z.infer<typeof ITiledMapTile>;

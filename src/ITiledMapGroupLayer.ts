@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { isTiledMapProperty, ITiledMapProperty } from './ITiledMapProperty';
-import { isTiledMapLayer, ITiledMapLayer } from './ITiledMapLayer';
+import { ITiledMapProperty } from './ITiledMapProperty';
+import { ITiledMapLayer } from './ITiledMapLayer';
 
 interface TiledMapGroupLayerOptional {
   height: number;
@@ -28,12 +28,12 @@ export interface TiledMapGroupLayer extends Partial<TiledMapGroupLayerOptional> 
   layers: ITiledMapLayer[];
 }
 
-export const isTiledMapGroupLayer: z.ZodType<TiledMapGroupLayer> = z.lazy(() =>
+export const ITiledMapGroupLayer: z.ZodType<TiledMapGroupLayer> = z.lazy(() =>
   z.object({
     name: z.string(),
     opacity: z.number(),
     type: z.literal('group'),
-    layers: isTiledMapLayer.array(),
+    layers: ITiledMapLayer.array(),
     visible: z.boolean(),
 
     height: z.number().optional(),
@@ -44,7 +44,7 @@ export const isTiledMapGroupLayer: z.ZodType<TiledMapGroupLayer> = z.lazy(() =>
     offsety: z.number().optional(),
     parallaxx: z.number().optional(),
     parallaxy: z.number().optional(),
-    properties: isTiledMapProperty.array().optional(),
+    properties: ITiledMapProperty.array().optional(),
     startx: z.number().optional(),
     starty: z.number().optional(),
     tintcolor: z.string().optional(),
@@ -54,4 +54,4 @@ export const isTiledMapGroupLayer: z.ZodType<TiledMapGroupLayer> = z.lazy(() =>
   }),
 );
 
-export type ITiledMapGroupLayer = z.infer<typeof isTiledMapGroupLayer>;
+export type ITiledMapGroupLayer = z.infer<typeof ITiledMapGroupLayer>;

@@ -1,14 +1,14 @@
 import { z } from 'zod';
-import { isTiledMapTileLayer } from './ITiledMapTileLayer';
-import { isTiledMapGroupLayer } from './ITiledMapGroupLayer';
-import { isTiledMapObjectLayer } from './ITiledMapObjectLayer';
-import { isTiledMapImageLayer } from './ITiledMapImageLayer';
+import { ITiledMapTileLayer } from './ITiledMapTileLayer';
+import { ITiledMapGroupLayer } from './ITiledMapGroupLayer';
+import { ITiledMapObjectLayer } from './ITiledMapObjectLayer';
+import { ITiledMapImageLayer } from './ITiledMapImageLayer';
 
-export const isTiledMapLayer = z.union([
-  isTiledMapTileLayer,
-  isTiledMapGroupLayer,
-  isTiledMapObjectLayer,
-  isTiledMapImageLayer,
+export const ITiledMapLayer = z.union([
+  ITiledMapTileLayer,
+  ITiledMapGroupLayer,
+  ITiledMapObjectLayer,
+  ITiledMapImageLayer,
 ]);
 
-export type ITiledMapLayer = z.infer<typeof isTiledMapLayer>;
+export type ITiledMapLayer = z.infer<typeof ITiledMapLayer>;

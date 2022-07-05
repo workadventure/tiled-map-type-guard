@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { isTiledMapProperty } from './ITiledMapProperty';
+import { ITiledMapProperty } from './ITiledMapProperty';
 
-export const isTiledMapImageLayer = z.object({
+export const ITiledMapImageLayer = z.object({
   image: z.string(),
   name: z.string(),
   opacity: z.number(),
@@ -14,7 +14,7 @@ export const isTiledMapImageLayer = z.object({
   offsety: z.number().optional(),
   parallaxx: z.number().optional(),
   parallaxy: z.number().optional(),
-  properties: isTiledMapProperty.array().optional(),
+  properties: ITiledMapProperty.array().optional(),
   repeatx: z.boolean().optional(),
   repeaty: z.boolean().optional(),
   startx: z.number().optional(),
@@ -26,4 +26,4 @@ export const isTiledMapImageLayer = z.object({
   y: z.number().optional(),
 });
 
-export type ITiledMapImageLayer = z.infer<typeof isTiledMapImageLayer>;
+export type ITiledMapImageLayer = z.infer<typeof ITiledMapImageLayer>;
