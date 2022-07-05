@@ -1,3 +1,10 @@
+## [2.0.3](https://github.com/workadventure/tiled-map-type-guard/compare/v2.0.2...v2.0.3) (2022-07-05)
+
+
+### Bug Fixes
+
+* Fixing gid property in ITiledMapObject to int ([#14](https://github.com/workadventure/tiled-map-type-guard/issues/14)) ([4759b91](https://github.com/workadventure/tiled-map-type-guard/commit/4759b916d87aad5e1c9ff6b91262cf7771d3e245))
+
 ## [2.0.2](https://github.com/workadventure/tiled-map-type-guard/compare/v2.0.1...v2.0.2) (2022-07-05)
 
 
