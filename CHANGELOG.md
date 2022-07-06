@@ -1,3 +1,10 @@
+## [2.0.4](https://github.com/workadventure/tiled-map-type-guard/compare/v2.0.3...v2.0.4) (2022-07-06)
+
+
+### Bug Fixes
+
+* Exporting the Json type ([4b66ea1](https://github.com/workadventure/tiled-map-type-guard/commit/4b66ea18774d1a2568461b84c7b28d2e9a08d996))
+
 ## [2.0.3](https://github.com/workadventure/tiled-map-type-guard/compare/v2.0.2...v2.0.3) (2022-07-05)
 
 
