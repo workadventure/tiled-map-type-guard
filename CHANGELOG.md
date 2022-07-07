@@ -1,3 +1,10 @@
+## [2.0.5](https://github.com/workadventure/tiled-map-type-guard/compare/v2.0.4...v2.0.5) (2022-07-07)
+
+
+### Bug Fixes
+
+* do not create a map copy by default ([#16](https://github.com/workadventure/tiled-map-type-guard/issues/16)) ([83ef71a](https://github.com/workadventure/tiled-map-type-guard/commit/83ef71adeeda3a44453bf936a21c3b80230925c2))
+
 ## [2.0.4](https://github.com/workadventure/tiled-map-type-guard/compare/v2.0.3...v2.0.4) (2022-07-06)
 
 
