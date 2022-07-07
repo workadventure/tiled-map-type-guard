@@ -1,8 +1,8 @@
 import { ITiledMap } from './ITiledMap';
 import { ITiledMapLayer } from './ITiledMapLayer';
 
-export function upgradeMapToNewest(map: ITiledMap): ITiledMap {
-  const newMap: ITiledMap = JSON.parse(JSON.stringify(map));
+export function upgradeMapToNewest(map: ITiledMap, useCopy = false): ITiledMap {
+  const newMap: ITiledMap = useCopy ? JSON.parse(JSON.stringify(map)) : map;
 
   for (const layer of newMap.layers) {
     updateLayerFieldValue(layer);
