@@ -15,7 +15,7 @@ export const ITiledMapTile = z.object({
   y: z.number().optional(),
   width: z.number().optional(),
   height: z.number().optional(),
-  objectgroup: ITiledMapObjectLayer.array().optional(),
+  objectgroup: ITiledMapObjectLayer.optional(),
   probability: z.number().optional(),
   properties: ITiledMapProperty.array().optional(),
   class: z.string().optional(),
