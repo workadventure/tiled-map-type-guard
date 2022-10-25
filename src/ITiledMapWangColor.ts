@@ -7,7 +7,7 @@ export const ITiledMapWangColor = z.object({
   tile: z.number(),
 
   probability: z.number(),
-  properties: ITiledMapProperty.array(),
+  properties: ITiledMapProperty.array().optional(),
   type: z.string().optional(),
   class: z.string().optional(),
 });

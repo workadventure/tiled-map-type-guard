@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 export const ITiledMapWangTile = z.object({
-  tileid: z.string(),
+  tileid: z.number(),
   wangid: z.number().array(),
 });
 
