@@ -1,3 +1,11 @@
+## [2.0.6](https://github.com/workadventure/tiled-map-type-guard/compare/v2.0.5...v2.0.6) (2022-10-25)
+
+
+### Bug Fixes
+
+* Fix Wang Tileset typings ([b94cc94](https://github.com/workadventure/tiled-map-type-guard/commit/b94cc94d27fdce12402c5e4a4f66c84633a7d31e))
+* Linting ([b6fb0fa](https://github.com/workadventure/tiled-map-type-guard/commit/b6fb0fa94b2b693188cd458907227d44daf526f5))
+
 ## [2.0.5](https://github.com/workadventure/tiled-map-type-guard/compare/v2.0.4...v2.0.5) (2022-07-07)
 
 
