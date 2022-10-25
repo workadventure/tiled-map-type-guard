@@ -686,6 +686,78 @@ describe('Test ITiledMapTileset animated type guard', () => {
   });
 });
 
+describe('Test ITiledMapTileset wangsets', () => {
+  it('should pass', () => {
+    const property: ITiledMapTileset = {
+      columns: 3,
+      firstgid: 6562,
+      image: 'zone.png',
+      imageheight: 102,
+      imagewidth: 102,
+      margin: 1,
+      name: 'zone',
+      spacing: 2,
+      tilecount: 9,
+      tileheight: 32,
+      tilewidth: 32,
+      wangsets: [
+        {
+          colors: [
+            {
+              color: '#ff0000',
+              name: 'zone',
+              probability: 1,
+              tile: 0,
+            },
+          ],
+          name: 'Terrains',
+          tile: -1,
+          type: 'corner',
+          wangtiles: [
+            {
+              tileid: 0,
+              wangid: [0, 0, 0, 1, 0, 0, 0, 0],
+            },
+            {
+              tileid: 1,
+              wangid: [0, 0, 0, 1, 0, 1, 0, 0],
+            },
+            {
+              tileid: 2,
+              wangid: [0, 0, 0, 0, 0, 1, 0, 0],
+            },
+            {
+              tileid: 3,
+              wangid: [0, 1, 0, 1, 0, 0, 0, 0],
+            },
+            {
+              tileid: 4,
+              wangid: [0, 1, 0, 1, 0, 1, 0, 1],
+            },
+            {
+              tileid: 5,
+              wangid: [0, 0, 0, 0, 0, 1, 0, 1],
+            },
+            {
+              tileid: 6,
+              wangid: [0, 1, 0, 0, 0, 0, 0, 0],
+            },
+            {
+              tileid: 7,
+              wangid: [0, 1, 0, 0, 0, 0, 0, 1],
+            },
+            {
+              tileid: 8,
+              wangid: [0, 0, 0, 0, 0, 0, 0, 1],
+            },
+          ],
+        },
+      ],
+    };
+    expect(ITiledMapTileset.parse(property)).toStrictEqual(property);
+  });
+});
+
 describe('Test ITiledMapObjectLayer type guard', () => {
   it('should pass', () => {
     const property = {
