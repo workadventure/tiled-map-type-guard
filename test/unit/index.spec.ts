@@ -849,39 +849,40 @@ describe('Test ITiledMapObjectLayer type guard', () => {
   });
 });
 
-describe('Test ITileMapTile objectgroup type guard', () =>{
-  it('should pass', () =>{
+describe('Test ITileMapTile objectgroup type guard', () => {
+  it('should pass', () => {
     const tile = {
-      "id":90,
-      "objectgroup":
-         {
-          "draworder":"index",
-          "name":"",
-          "objects":[
-                 {
-                  "type":"",
-                  "height":28,
-                  "id":6,
-                  "name":"",
-                  "rotation":0,
-                  "visible":true,
-                  "width":20,
-                  "x":0,
-                  "y":0
-                 }],
-          "opacity":1,
-          "type":"objectgroup",
-          "visible":true,
-          "x":0,
-          "y":0
-         },
-      "properties":[
-             {
-              "name":"collides",
-              "type":"bool",
-              "value":true
-             }]
-     };
-     ITiledMapTile.parse(tile);
-  })
-})
+      id: 90,
+      objectgroup: {
+        draworder: 'index',
+        name: '',
+        objects: [
+          {
+            type: '',
+            height: 28,
+            id: 6,
+            name: '',
+            rotation: 0,
+            visible: true,
+            width: 20,
+            x: 0,
+            y: 0,
+          },
+        ],
+        opacity: 1,
+        type: 'objectgroup',
+        visible: true,
+        x: 0,
+        y: 0,
+      },
+      properties: [
+        {
+          name: 'collides',
+          type: 'bool',
+          value: true,
+        },
+      ],
+    };
+    ITiledMapTile.parse(tile);
+  });
+});
