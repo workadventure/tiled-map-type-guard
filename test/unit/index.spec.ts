@@ -7,6 +7,8 @@ import { ITiledMapImageLayer } from '../../src/index';
 import { ITiledMap } from '../../src/index';
 import { ITiledMapTileset } from '../../src/index';
 import { ITiledMapGroupLayer } from '../../src/index';
+import { ITiledMapEmbeddedTileset } from '../../src/ITiledMapEmbeddedTileset';
+import { ITiledMapTilesetReference } from '../../src/ITiledMapTilesetReference';
 
 const map = {
   compressionlevel: -1,
@@ -590,6 +592,28 @@ describe('Test ITiledMapTileset type guard', () => {
       tilewidth: 32,
     };
     expect(ITiledMapTileset.parse(property)).toStrictEqual(property);
+    expect(ITiledMapEmbeddedTileset.parse(property)).toStrictEqual(property);
+
+    const parsedProperty = ITiledMapTileset.parse(property);
+    if ('name' in parsedProperty) {
+      expect(parsedProperty.name).toStrictEqual('TDungeon');
+    }
+  });
+});
+
+describe('Test ITiledMapTilesetReference type guard', () => {
+  it('should pass', () => {
+    const property: ITiledMapTileset = {
+      firstgid: 1,
+      source: 'tileset_dungeon.tmx',
+    };
+    expect(ITiledMapTileset.parse(property)).toStrictEqual(property);
+    expect(ITiledMapTilesetReference.parse(property)).toStrictEqual(property);
+
+    const parsedProperty = ITiledMapTileset.parse(property);
+    if ('source' in parsedProperty) {
+      expect(parsedProperty.source).toStrictEqual('tileset_dungeon.tmx');
+    }
   });
 });
 
@@ -846,6 +870,44 @@ describe('Test ITiledMapObjectLayer type guard', () => {
     const layer = group.layers[0];
 
     expect(ITiledMapObjectLayer.parse(layer)).toStrictEqual(layer);
+  });
+});
+
+describe('Test ITileMapTile objectgroup type guard', () => {
+  it('should pass', () => {
+    const tile = {
+      id: 90,
+      objectgroup: {
+        draworder: 'index',
+        name: '',
+        objects: [
+          {
+            type: '',
+            height: 28,
+            id: 6,
+            name: '',
+            rotation: 0,
+            visible: true,
+            width: 20,
+            x: 0,
+            y: 0,
+          },
+        ],
+        opacity: 1,
+        type: 'objectgroup',
+        visible: true,
+        x: 0,
+        y: 0,
+      },
+      properties: [
+        {
+          name: 'collides',
+          type: 'bool',
+          value: true,
+        },
+      ],
+    };
+    ITiledMapTile.parse(tile);
   });
 });
 
