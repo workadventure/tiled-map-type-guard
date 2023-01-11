@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/workadventure/tiled-map-type-guard/compare/v2.0.6...v2.1.0) (2023-01-11)
+
+
+### Features
+
+* Adding support for Tilesets referencing files ([0b6114d](https://github.com/workadventure/tiled-map-type-guard/commit/0b6114d1df62a079ef9a0cace315ce4d52406924))
+
 ## [2.0.6](https://github.com/workadventure/tiled-map-type-guard/compare/v2.0.5...v2.0.6) (2022-10-25)
 
 
