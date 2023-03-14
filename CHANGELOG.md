@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/workadventure/tiled-map-type-guard/compare/v2.1.0...v2.1.1) (2023-03-14)
+
+
+### Bug Fixes
+
+* Export tilesets types ([0a43b8a](https://github.com/workadventure/tiled-map-type-guard/commit/0a43b8a7b25223effb864e0fabcc32de26c8f8a6))
+
 # [2.1.0](https://github.com/workadventure/tiled-map-type-guard/compare/v2.0.6...v2.1.0) (2023-01-11)
 
 
