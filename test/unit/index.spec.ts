@@ -781,6 +781,34 @@ describe('Test ITiledMapTileset wangsets', () => {
     expect(ITiledMapTileset.parse(property)).toStrictEqual(property);
   });
 });
+describe('Test ITiledMapTileset collection of images', () => {
+  it('should pass', () => {
+    const property: ITiledMapTileset = {
+      columns: 0,
+      firstgid: 3020,
+      grid: {
+        height: 1,
+        orientation: 'orthogonal',
+        width: 1,
+      },
+      margin: 0,
+      name: 'collection-of-images',
+      spacing: 0,
+      tilecount: 1,
+      tileheight: 672,
+      tiles: [
+        {
+          id: 0,
+          image: 'map.png',
+          imageheight: 672,
+          imagewidth: 992,
+        },
+      ],
+      tilewidth: 992,
+    };
+    expect(ITiledMapTileset.parse(property)).toStrictEqual(property);
+  });
+});
 
 describe('Test ITiledMapObjectLayer type guard', () => {
   it('should pass', () => {
