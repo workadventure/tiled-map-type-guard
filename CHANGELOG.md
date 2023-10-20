@@ -1,3 +1,10 @@
+## [2.1.2](https://github.com/workadventure/tiled-map-type-guard/compare/v2.1.1...v2.1.2) (2023-10-20)
+
+
+### Bug Fixes
+
+* Adding support for tilesets that are collections of images ([#21](https://github.com/workadventure/tiled-map-type-guard/issues/21)) ([686bffd](https://github.com/workadventure/tiled-map-type-guard/commit/686bffdaeb35a82f22afe598071dcc7e1d54b100))
+
 ## [2.1.1](https://github.com/workadventure/tiled-map-type-guard/compare/v2.1.0...v2.1.1) (2023-03-14)
 
 
