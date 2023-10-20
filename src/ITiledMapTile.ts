@@ -8,9 +8,6 @@ export const ITiledMapTile = z.object({
   id: z.number(),
 
   animation: ITiledMapFrame.array().optional(),
-  image: z.string().optional(),
-  imageheight: z.number().optional(),
-  imagewidth: z.number().optional(),
   x: z.number().optional(),
   y: z.number().optional(),
   width: z.number().optional(),
